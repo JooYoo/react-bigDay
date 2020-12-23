@@ -1,11 +1,9 @@
 import React from 'react';
+import slideUpStyle from './SlideUp.module.scss';
 
 function SlideUp() {
   return (
-    <div>
-      SlideUp works
-      <div>small title</div>
-    </div>
+    <div className={slideUpStyle['slide-up-container']}>SlideUp works</div>
   );
 }
 

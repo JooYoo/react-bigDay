@@ -1,12 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import GridContainer from './components/GridContainer/GridContainer';
+import Grid from './components/Grid/Grid';
 import SlideUp from './components/SlideUp/SlideUp';
 
 function App() {
   return (
     <div className="App">
-      <GridContainer />
+      <Grid />
       <SlideUp />
     </div>
   );
