@@ -1,4 +1,6 @@
 import React, {useState}  from 'react'
+import BigDayItem from '../BigDayItem/BigDayItem';
+import BigDayForm from '../BigDayForm/BigDayForm';
 
 function BigDayList() {
     const initBigDayList = [
@@ -24,12 +26,24 @@ function BigDayList() {
 
     const [bigDayList, setbigDayList] = useState(initBigDayList);
 
+    const addBigDay = (title, begin, end) =>{
+        const newBigDayList = [...bigDayList, {
+            title: title,
+            begin: begin,
+            end: end
+        }]
+
+        setbigDayList(newBigDayList);
+    }
+
     let bigDays = bigDayList.map((bigDay, index) => (
-        <div key={index}>{bigDay.title}</div>
+        <BigDayItem key={index} id={index} bigDay={bigDay}/>
     ))
 
     return (
         <div>
+            <BigDayForm addBigDay={addBigDay}/>
+            <hr/>
             {bigDays}
         </div>
     )

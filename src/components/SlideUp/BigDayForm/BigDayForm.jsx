@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function BigDayForm() {
+function BigDayForm(props) {
   const [title, setTitle] = useState('');
   const [begin, setBegin] = useState('2020/01/01');
   const [end, setEnd] = useState('2020/12/31');
@@ -18,7 +18,13 @@ function BigDayForm() {
   };
 
   const submitFormHandler = (e) => {
-    console.log(`submit: ${title}, ${begin}, ${end}`);
+    // add new BigDay
+    props.addBigDay(title, begin, end);
+
+    // after add new BigDay clean up textbox
+    setTitle('')
+
+    // avoid after submit refresh
     e.preventDefault();
   };
 
