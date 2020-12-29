@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
+import * as moment from 'moment';
 
 function BigDayForm(props) {
   const initDate = {
@@ -18,8 +19,12 @@ function BigDayForm(props) {
   };
 
   const submitFormHandler = (e) => {
+    // formate date
+    let startDateFm = moment(startDate).format('YYYY-MM-DD');
+    let endDateFm = moment(endDate).format('YYYY-MM-DD');
+
     // add new BigDay
-    props.addBigDay(title, String(startDate._d), String(endDate._d));
+    props.addBigDay(title, startDateFm, endDateFm);
 
     // after add new BigDay clean up textbox
     setTitle('');
@@ -30,7 +35,7 @@ function BigDayForm(props) {
 
   const onDatesChangeHandler = ({ startDate, endDate }) => {
     setDate({ startDate, endDate });
-    console.log(startDate._d);
+    console.log(moment(startDate).format('YYYY-MM-DD'));
   };
 
   return (
@@ -42,15 +47,16 @@ function BigDayForm(props) {
       <div>
         <label> Date Range: </label>
         <DateRangePicker
-          startDate={startDate} // momentPropTypes.momentObj or null,
-          startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-          endDate={endDate} // momentPropTypes.momentObj or null,
-          endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+          startDate={startDate}
+          startDateId="your_unique_start_date_id"
+          endDate={endDate}
+          endDateId="your_unique_end_date_id"
           onDatesChange={({ startDate, endDate }) =>
             onDatesChangeHandler({ startDate, endDate })
-          } // PropTypes.func.isRequired,
-          focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-          onFocusChange={(focusedInput) => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+          }
+          focusedInput={focusedInput}
+          onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+          displayFormat="YYYY-MM-DD"
         />
       </div>
       <button type="submit">submit</button>
