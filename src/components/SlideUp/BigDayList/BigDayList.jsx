@@ -1,30 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { BigDayContext } from '../../../share/BigDayContext';
 import BigDayItem from '../BigDayItem/BigDayItem';
 import BigDayForm from '../BigDayForm/BigDayForm';
 
 function BigDayList() {
-  const initBigDayList = [
-    {
-      id: 0,
-      title: 'Zelda release',
-      begin: '2020/12/12',
-      end: '2021/05/01',
-    },
-    {
-      id: 1,
-      title: 'Borderlands release',
-      begin: '2020/12/12',
-      end: '2021/05/01',
-    },
-    {
-      id: 2,
-      title: 'Mario release',
-      begin: '2020/12/12',
-      end: '2021/05/01',
-    },
-  ];
-
-  const [bigDayList, setBigDayList] = useState(initBigDayList);
+  // get data from context
+  const [bigDayList, setBigDayList] = useContext(BigDayContext);
 
   /* ----------------------------- add new BigDay ----------------------------- */
   const addBigDay = (title, begin, end) => {
