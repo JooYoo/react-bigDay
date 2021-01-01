@@ -1,11 +1,11 @@
 import React from 'react';
-import BigDayBall from './BigDayBall/BigDayBall';
+import BigDayBallList from './BigDayBallList/BigDayBallList';
 import gridStyle from './Grid.module.scss';
 
 function Grid() {
   return (
     <div className={gridStyle['grid-container']}>
-      <BigDayBall />
+      <BigDayBallList />
     </div>
   );
 }

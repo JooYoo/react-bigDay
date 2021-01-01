@@ -1,17 +1,13 @@
-import React, { useContext } from 'react';
-import { BigDayContext } from '../../../share/BigDayContext';
+import React from 'react';
 import bigDayBallStyle from './BigDayBall.module.scss';
 
-function BigDayBall() {
-  // get data from BigDayContext
-  const [bigDayList, setBigDayList] = useContext(BigDayContext);
-
+function BigDayBall(props) {
   return (
     <div>
       <div className={bigDayBallStyle['container']}>
         <div className={bigDayBallStyle['wave']}></div>
       </div>
-      <h4>{bigDayList.length}</h4>
+      <div>{props.title}</div>
     </div>
   );
 }
