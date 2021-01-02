@@ -5,11 +5,11 @@ import bigDayBallListStyle from './BigDayBallList.module.scss';
 
 function BigDayBallList() {
   // get data from BigDayContext
-  const [bigDayBallList, setBigDayBallList] = useContext(BigDayContext);
+  const [bigDayList, setBigDayList] = useContext(BigDayContext);
 
   // iteration bigDayBallList items
-  let bigDayBalls = bigDayBallList.map((bigDayBall, index) => (
-    <BigDayBall key={index} title={bigDayBall.title} />
+  let bigDayBalls = bigDayList.map((bigDay, index) => (
+    <BigDayBall key={index} bigDay={bigDay} />
   ));
 
   return <div className={bigDayBallListStyle['container']}>{bigDayBalls}</div>;

@@ -7,20 +7,23 @@ const BigDayProvider = (props) => {
     {
       id: 0,
       title: 'Zelda release',
-      begin: '2020/12/12',
-      end: '2021/05/01',
+      begin: '2021.05.01',
+      end: '2021.05.02',
+      restDays: 1,
     },
     {
       id: 1,
       title: 'Borderlands release',
-      begin: '2020/12/12',
-      end: '2021/05/01',
+      begin: '2021.06.01',
+      end: '2021.06.02',
+      restDays: 1,
     },
     {
       id: 2,
       title: 'Mario release',
-      begin: '2020/12/12',
-      end: '2021/05/01',
+      begin: '2021.07.01',
+      end: '2021.07.02',
+      restDays: 1,
     },
   ];
 

@@ -7,7 +7,11 @@ function BigDayBall(props) {
       <div className={bigDayBallStyle['container']}>
         <div className={bigDayBallStyle['wave']}></div>
       </div>
-      <div>{props.title}</div>
+      <div>{props.bigDay.title}</div>
+      <div>
+        {props.bigDay.begin} ~ {props.bigDay.end}
+      </div>
+      <div>{props.bigDay.restDays}</div>
     </div>
   );
 }

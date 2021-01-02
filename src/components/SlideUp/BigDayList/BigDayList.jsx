@@ -8,13 +8,14 @@ function BigDayList() {
   const [bigDayList, setBigDayList] = useContext(BigDayContext);
 
   /* ----------------------------- add new BigDay ----------------------------- */
-  const addBigDay = (title, begin, end) => {
+  const addBigDay = (title, begin, end, restDays) => {
     const newBigDayList = [
       ...bigDayList,
       {
         title: title,
         begin: begin,
         end: end,
+        restDays: restDays,
       },
     ];
 

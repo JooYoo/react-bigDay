@@ -20,11 +20,14 @@ function BigDayForm(props) {
 
   const submitFormHandler = (e) => {
     // formate date
-    let startDateFm = moment(startDate).format('YYYY-MM-DD');
-    let endDateFm = moment(endDate).format('YYYY-MM-DD');
+    let startDateFm = moment(startDate).format('YYYY.MM.DD');
+    let endDateFm = moment(endDate).format('YYYY.MM.DD');
+
+    // TODO: get rest days
+    let restDays = endDate.diff(startDate, 'days');
 
     // add new BigDay
-    props.addBigDay(title, startDateFm, endDateFm);
+    props.addBigDay(title, startDateFm, endDateFm, restDays);
 
     // after add new BigDay clean up textbox
     setTitle('');
@@ -35,7 +38,6 @@ function BigDayForm(props) {
 
   const onDatesChangeHandler = ({ startDate, endDate }) => {
     setDate({ startDate, endDate });
-    console.log(moment(startDate).format('YYYY-MM-DD'));
   };
 
   return (
@@ -56,7 +58,7 @@ function BigDayForm(props) {
           }
           focusedInput={focusedInput}
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
-          displayFormat="YYYY-MM-DD"
+          displayFormat="YYYY.MM.DD"
         />
       </div>
       <button type="submit">submit</button>
