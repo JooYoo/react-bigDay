@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
@@ -19,26 +19,33 @@ function BigDayForm(props) {
   };
 
   const submitFormHandler = (e) => {
-    // formate date
+    // avoid after submit refresh
+    e.preventDefault();
+
+    // title: after add new BigDay clean up textbox
+    setTitle('');
+
+    // dateRange: formate date
     let startDateFm = moment(startDate).format('YYYY.MM.DD');
     let endDateFm = moment(endDate).format('YYYY.MM.DD');
 
-    // TODO: get rest days
+    // restDay: get rest days
     let restDays = endDate.diff(startDate, 'days');
 
-    // add new BigDay
-    props.addBigDay(title, startDateFm, endDateFm, restDays);
+    // color: get color
+    let highlightColor = colorRef.current.querySelectorAll(
+      'input[name="color"]:checked',
+    )[0].value;
 
-    // after add new BigDay clean up textbox
-    setTitle('');
-
-    // avoid after submit refresh
-    e.preventDefault();
+    // add infos to new BigDay
+    props.addBigDay(title, startDateFm, endDateFm, restDays, highlightColor);
   };
 
   const onDatesChangeHandler = ({ startDate, endDate }) => {
     setDate({ startDate, endDate });
   };
+
+  const colorRef = useRef(null);
 
   return (
     <form onSubmit={submitFormHandler}>
@@ -61,6 +68,13 @@ function BigDayForm(props) {
           displayFormat="YYYY.MM.DD"
         />
       </div>
+
+      <div ref={colorRef}>
+        <input name="color" type="radio" value="red" />
+        <input name="color" type="radio" value="blue" />
+        <input name="color" type="radio" value="green" />
+      </div>
+
       <button type="submit">submit</button>
     </form>
   );

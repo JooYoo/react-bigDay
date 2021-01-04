@@ -12,6 +12,7 @@ function BigDayBall(props) {
         {props.bigDay.begin} ~ {props.bigDay.end}
       </div>
       <div>{props.bigDay.restDays}</div>
+      <div>{props.bigDay.highlightColor}</div>
     </div>
   );
 }

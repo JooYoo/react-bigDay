@@ -10,6 +10,7 @@ const BigDayProvider = (props) => {
       begin: '2021.05.01',
       end: '2021.05.02',
       restDays: 1,
+      highlightColor: 'pink',
     },
     {
       id: 1,
@@ -17,6 +18,7 @@ const BigDayProvider = (props) => {
       begin: '2021.06.01',
       end: '2021.06.02',
       restDays: 1,
+      highlightColor: 'hot-pink',
     },
     {
       id: 2,
@@ -24,6 +26,7 @@ const BigDayProvider = (props) => {
       begin: '2021.07.01',
       end: '2021.07.02',
       restDays: 1,
+      highlightColor: 'cold-pink',
     },
   ];
 
