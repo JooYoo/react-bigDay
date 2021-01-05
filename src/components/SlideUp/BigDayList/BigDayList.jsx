@@ -36,8 +36,8 @@ function BigDayList() {
   /* ----------------------- iteration bigDayList items ----------------------- */
   let bigDays = bigDayList.map((bigDay, index) => (
     <BigDayItem
-      key={index}
-      id={index}
+      key={bigDay.id}
+      id={bigDay.id}
       bigDay={bigDay}
       removeBigDay={removeBigDay}
     />

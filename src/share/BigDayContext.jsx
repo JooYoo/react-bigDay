@@ -1,11 +1,12 @@
 import React, { useState, createContext } from 'react';
+import {v4 as uuid} from 'uuid'
 
 const BigDayContext = createContext();
 
 const BigDayProvider = (props) => {
   const initBigDayList = [
     {
-      id: 0,
+      id: uuid(),
       title: 'Zelda release',
       begin: '2021.05.01',
       end: '2021.05.02',
@@ -13,7 +14,7 @@ const BigDayProvider = (props) => {
       highlightColor: 'pink',
     },
     {
-      id: 1,
+      id: uuid(),
       title: 'Borderlands release',
       begin: '2021.06.01',
       end: '2021.06.02',
@@ -21,7 +22,7 @@ const BigDayProvider = (props) => {
       highlightColor: 'hot-pink',
     },
     {
-      id: 2,
+      id: uuid(),
       title: 'Mario release',
       begin: '2021.07.01',
       end: '2021.07.02',
