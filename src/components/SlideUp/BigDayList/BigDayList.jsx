@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { BigDayContext } from '../../../share/BigDayContext';
 import BigDayItem from '../BigDayItem/BigDayItem';
 import BigDayForm from '../BigDayForm/BigDayForm';
+import { v4 as uuid } from "uuid";
 
 function BigDayList() {
   // get data from context
@@ -12,6 +13,7 @@ function BigDayList() {
     const newBigDayList = [
       ...bigDayList,
       {
+        id: uuid(),
         title: title,
         begin: begin,
         end: end,
