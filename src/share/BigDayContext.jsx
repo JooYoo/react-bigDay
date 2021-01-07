@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react';
-import {v4 as uuid} from 'uuid'
+import { v4 as uuid } from 'uuid';
 
 const BigDayContext = createContext();
 
@@ -9,16 +9,16 @@ const BigDayProvider = (props) => {
       id: uuid(),
       title: 'Zelda release',
       begin: '2021.05.01',
-      end: '2021.05.02',
-      restDays: 1,
+      end: '2021.05.28',
+      restDays: 28,
       highlightColor: 'pink',
     },
     {
       id: uuid(),
       title: 'Borderlands release',
       begin: '2021.06.01',
-      end: '2021.06.02',
-      restDays: 1,
+      end: '2021.06.14',
+      restDays: 14,
       highlightColor: 'hot-pink',
     },
     {

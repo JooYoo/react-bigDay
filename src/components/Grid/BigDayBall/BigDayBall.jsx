@@ -7,11 +7,22 @@ function BigDayBall(props) {
       <div className={bigDayBallStyle['container']}>
         <div className={bigDayBallStyle['wave']}></div>
       </div>
-      <div>{props.bigDay.title}</div>
-      <div>
-        {props.bigDay.begin} ~ {props.bigDay.end}
+      <div className={bigDayBallStyle['info-container']}>
+        <div className={bigDayBallStyle['info-rest-day-text']}>
+          {props.bigDay.restDays}
+          <span className={bigDayBallStyle['info-rest-day-text__unit']}>
+            day
+          </span>
+        </div>
+        <div className={bigDayBallStyle['info-date-end']}>
+          {props.bigDay.end}
+        </div>
+        <div className={bigDayBallStyle['info-title']}>
+          {props.bigDay.title}
+        </div>
       </div>
-      <div>{props.bigDay.restDays}</div>
+
+      {/* DEV: transfer to color */}
       <div>{props.bigDay.highlightColor}</div>
     </div>
   );
