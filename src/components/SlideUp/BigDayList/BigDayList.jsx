@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { BigDayContext } from '../../../share/BigDayContext';
 import BigDayItem from '../BigDayItem/BigDayItem';
 import BigDayForm from '../BigDayForm/BigDayForm';
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from 'uuid';
 
 function BigDayList() {
   // get data from context
@@ -26,13 +26,13 @@ function BigDayList() {
   };
 
   /* ------------------------------ remove BigDay ----------------------------- */
-  const removeBigDay = (index) => {
+  const removeBigDay = (id) => {
     // clone the bigDayList
-    const newBigDayList = [...bigDayList];
-    // remove bigDayItem via index
-    newBigDayList.splice(index, 1);
+    const cloneBigDayList = [...bigDayList];
+    // remove bigDayItem via filter
+    const newBigDays = cloneBigDayList.filter((x) => x.id !== id);
     // update the state
-    setBigDayList(newBigDayList);
+    setBigDayList(newBigDays);
   };
 
   /* ----------------------- iteration bigDayList items ----------------------- */

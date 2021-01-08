@@ -61,20 +61,3 @@ $ball-border: $ball-padding;
     transform: rotate(360deg);
   }
 }
-
-.info-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.info-rest-day-text {
-  font-size: 3vmin;
-  font-weight: bolder;
-
-  &__unit {
-    font-size: 2vmin;
-    font-weight: lighter;
-  }
-}
