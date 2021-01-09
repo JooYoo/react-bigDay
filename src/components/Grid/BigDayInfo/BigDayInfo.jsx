@@ -4,19 +4,23 @@ import bigDayInfoStyle from './BigDayInfo.module.scss';
 
 function BigDayInfo() {
   // get data from <BigDayBallList />
-  const bigDayInfo = useContext(BigDayInfoContext);
+  const BigDayInfoConsumer = useContext(BigDayInfoContext);
 
   return (
     <div>
       <div className={bigDayInfoStyle['info-container']}>
         <div className={bigDayInfoStyle['info-rest-day-text']}>
-          {bigDayInfo.restDays}
+          {BigDayInfoConsumer.restDays}
           <span className={bigDayInfoStyle['info-rest-day-text__unit']}>
             day
           </span>
         </div>
-        <div className={bigDayInfoStyle['info-date-end']}>{bigDayInfo.end}</div>
-        <div className={bigDayInfoStyle['info-title']}>{bigDayInfo.title}</div>
+        <div className={bigDayInfoStyle['info-date-end']}>
+          {BigDayInfoConsumer.end}
+        </div>
+        <div className={bigDayInfoStyle['info-title']}>
+          {BigDayInfoConsumer.title}
+        </div>
       </div>
     </div>
   );
