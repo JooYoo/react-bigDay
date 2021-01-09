@@ -1,16 +1,51 @@
+$font-unit: 3vmin;
+
 .info-container {
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  top: 0;
+  height: 100%;
+
+  font-family: bruno;
 }
 
 .info-rest-day-text {
-  font-size: 3vmin;
-  font-weight: bolder;
+  font-size: 3.75 * $font-unit;
+  -webkit-text-stroke: (0.125 * $font-unit) white;
+  line-height: (2 * $font-unit);
 
   &__unit {
-    font-size: 2vmin;
-    font-weight: lighter;
+    font-size: (1.125 * $font-unit);
+    -webkit-text-stroke: (0.0375 * $font-unit) white;
+    text-shadow: -0.1vmin 0 white, 0 0.1vmin white, 0.1vmin 0 white,
+      0 -0.1vmin white;
   }
+}
+
+.info-date-end {
+  font-size: $font-unit;
+  letter-spacing: (0.5 * $font-unit);
+  text-shadow: white 0 0 0.4vmin, white 0 0 0.4vmin, white 0 0 0.4vmin,
+    white 0 0 0.4vmin, white 0 0 0.4vmin, white 0 0 0.4vmin;
+}
+
+.info-title {
+  font-family: verdana;
+  font-size: (1.25 * $font-unit);
+  font-weight: bolder;
+  line-height: 10vmin;
+  -webkit-text-stroke: 1.5px white;
+}
+
+.info-description {
+  width: 60%;
+  font-family: Verdana;
+  text-align: center;
+  font-size: (0.625 * $font-unit);
+  letter-spacing: (0.075 * $font-unit);
+  text-shadow: white 0 0 0.2vmin, white 0 0 0.2vmin, white 0 0 0.2vmin,
+    white 0 0 0.2vmin, white 0 0 0.2vmin, white 0 0 0.2vmin;
 }

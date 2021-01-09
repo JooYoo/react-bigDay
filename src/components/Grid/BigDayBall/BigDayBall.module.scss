@@ -1,12 +1,16 @@
 :root {
-  --wave-percent: 30%;
+  --wave-percent: 20%;
   --container-color: rgba(0, 0, 0, 1);
   --wave-color: rgba(0, 0, 0, 0.9);
 }
 
-$ball-size: 20vmin;
-$ball-padding: 0.5vmin;
+$ball-size: 60vmin;
+$ball-padding: 1.3vmin;
 $ball-border: $ball-padding;
+
+.wrapper {
+  position: relative;
+}
 
 .container {
   width: $ball-size;
