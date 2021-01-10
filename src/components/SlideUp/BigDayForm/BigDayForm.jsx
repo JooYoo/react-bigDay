@@ -11,11 +11,16 @@ function BigDayForm(props) {
   };
 
   const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [{ startDate, endDate }, setDate] = useState(initDate);
   const [focusedInput, setFocusedInput] = useState(null);
 
   const setTitleHandler = (e) => {
     setTitle(e.target.value);
+  };
+
+  const setDescriptionHandler = (e) => {
+    setDescription(e.target.value);
   };
 
   const submitFormHandler = (e) => {
@@ -24,6 +29,9 @@ function BigDayForm(props) {
 
     // title: after add new BigDay clean up textbox
     setTitle('');
+
+    // description: after add new BigDay clean up textarea
+    setDescription('');
 
     // dateRange: formate date
     let startDateFm = moment(startDate).format('YYYY.MM.DD');
@@ -38,7 +46,14 @@ function BigDayForm(props) {
     )[0].value;
 
     // add infos to new BigDay
-    props.addBigDay(title, startDateFm, endDateFm, restDays, highlightColor);
+    props.addBigDay(
+      title,
+      description,
+      startDateFm,
+      endDateFm,
+      restDays,
+      highlightColor,
+    );
   };
 
   const onDatesChangeHandler = ({ startDate, endDate }) => {
@@ -52,6 +67,15 @@ function BigDayForm(props) {
       <div>
         <label>title:</label>
         <input type="text" value={title} onChange={(e) => setTitleHandler(e)} />
+      </div>
+      <div>
+        <label>description:</label>
+        <textarea
+          cols="5"
+          rows="3"
+          value={description}
+          onChange={(e) => setDescriptionHandler(e)}
+        ></textarea>
       </div>
       <div>
         <label> Date Range: </label>

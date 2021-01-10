@@ -9,12 +9,20 @@ function BigDayList() {
   const [bigDayList, setBigDayList] = useContext(BigDayContext);
 
   /* ----------------------------- add new BigDay ----------------------------- */
-  const addBigDay = (title, begin, end, restDays, highlightColor) => {
+  const addBigDay = (
+    title,
+    description,
+    begin,
+    end,
+    restDays,
+    highlightColor,
+  ) => {
     const newBigDayList = [
       ...bigDayList,
       {
         id: uuid(),
         title: title,
+        description: description,
         begin: begin,
         end: end,
         restDays: restDays,
