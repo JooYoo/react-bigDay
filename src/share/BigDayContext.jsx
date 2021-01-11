@@ -14,28 +14,28 @@ const initBigDayList = [
     themeColor: 'pink',
   },
   // DEV: bigDayInfo styling
-  // {
-  //   id: uuid(),
-  //   title: 'Borderlands release',
-  //   description:
-  //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend lectus nec accumsan.',
-  //   begin: '2021.06.01',
-  //   end: '2021.06.14',
-  //   restDays: 14,
-  //   isHighlight: true,
-  //   themeColor: 'hot-pink',
-  // },
-  // {
-  //   id: uuid(),
-  //   title: 'Mario release',
-  //   description:
-  //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend lectus nec accumsan.',
-  //   begin: '2021.07.01',
-  //   end: '2021.07.02',
-  //   restDays: 1,
-  //   isHighlight: false,
-  //   themeColor: 'cold-pink',
-  // },
+  {
+    id: uuid(),
+    title: 'Borderlands release',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend lectus nec accumsan.',
+    begin: '2021.06.01',
+    end: '2021.06.14',
+    restDays: 14,
+    isHighlight: true,
+    themeColor: 'hot-pink',
+  },
+  {
+    id: uuid(),
+    title: 'Mario release',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend lectus nec accumsan.',
+    begin: '2021.07.01',
+    end: '2021.07.02',
+    restDays: 1,
+    isHighlight: false,
+    themeColor: 'cold-pink',
+  },
 ];
 
 const BigDayContext = createContext();

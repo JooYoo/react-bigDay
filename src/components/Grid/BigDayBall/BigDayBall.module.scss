@@ -10,18 +10,23 @@ $ball-border: $ball-padding;
 
 .wrapper {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $ball-size;
+  height: $ball-size;
 }
 
 .container {
-  width: $ball-size;
-  height: $ball-size;
-
+  position: absolute;
   margin: 1.5vmin;
   border: $ball-padding solid rgba(255, 255, 255, 1);
   border-radius: 50%;
   /* box-shadow can be used to add extra border */
   box-shadow: 0 0 0 $ball-border var(--container-color);
 
+  height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
