@@ -19,7 +19,6 @@ $ball-border: $ball-padding;
 
 .container {
   position: absolute;
-  margin: 1.5vmin;
   border: $ball-padding solid rgba(255, 255, 255, 1);
   border-radius: 50%;
   /* box-shadow can be used to add extra border */
