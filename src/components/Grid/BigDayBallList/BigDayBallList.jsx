@@ -18,7 +18,22 @@ function BigDayBallList() {
     </BigDayInfoProvider>
   ));
 
-  return <div className={bigDayBallListStyle['container']}>{bigDayBalls}</div>;
+  // get the highLight bigDay
+  let hBigDay = bigDayList.find((bigDay) => bigDay.isHighlight === true);
+
+  return (
+    <div className={bigDayBallListStyle['ball-container']}>
+      <div className={bigDayBallListStyle['ball-container--highlight']}>
+        <BigDayInfoProvider value={hBigDay}>
+          <BigDayBall bigDay={hBigDay} />
+        </BigDayInfoProvider>
+      </div>
+
+      <div className={bigDayBallListStyle['ball-container--default']}>
+        {bigDayBalls}
+      </div>
+    </div>
+  );
 }
 
 export default BigDayBallList;

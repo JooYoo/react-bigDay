@@ -13,7 +13,6 @@ const initBigDayList = [
     isHighlight: false,
     themeColor: 'pink',
   },
-  // DEV: bigDayInfo styling
   {
     id: uuid(),
     title: 'Borderlands release',
@@ -35,6 +34,17 @@ const initBigDayList = [
     restDays: 1,
     isHighlight: false,
     themeColor: 'cold-pink',
+  },
+  {
+    id: uuid(),
+    title: 'Zelda release',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend lectus nec accumsan.',
+    begin: '2021.12.01',
+    end: '2021.12.02',
+    restDays: 1,
+    isHighlight: false,
+    themeColor: 'cold-psink',
   },
 ];
 

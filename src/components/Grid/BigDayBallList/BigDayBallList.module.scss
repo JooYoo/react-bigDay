@@ -1,23 +1,32 @@
-.container {
-  // display: flex;
-  // justify-content: space-around;
-  // align-items: center;
-  // flex-wrap: wrap;
-
-  //TODO: try grid
-
-  display: grid;
-  justify-items: center;
+.ball-container {
+  display: flex;
+  justify-content: center;
   align-items: center;
 
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 0.5fr;
-  grid-gap: 5vmin;
-  grid-template-areas:
-    'h h b'
-    'h h b';
+  &--highlight {
+  }
 
-  padding: 5vmin;
+  &--default {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 
-  height: 100%;
+    //TODO: try grid
+
+    // display: grid;
+    // justify-items: center;
+    // align-items: center;
+
+    // grid-template-columns: 1fr 1fr 1fr;
+    // grid-template-rows: 1fr 0.5fr;
+    // grid-gap: 5vmin;
+    // grid-template-areas:
+    //   'h h b'
+    //   'h h b';
+
+    padding: 5vmin;
+
+    height: 100%;
+  }
 }
