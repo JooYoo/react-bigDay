@@ -2,11 +2,7 @@
   box-sizing: border-box;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 100%;
+html,
+body {
+  overflow: hidden;
 }
