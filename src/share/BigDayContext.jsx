@@ -10,7 +10,7 @@ const initBigDayList = [
     begin: '2021.05.01',
     end: '2021.05.28',
     restDays: 999,
-    isHighlight: false,
+    isHighlight: true,
     themeColor: 'pink',
   },
   {
@@ -21,7 +21,7 @@ const initBigDayList = [
     begin: '2021.06.01',
     end: '2021.06.14',
     restDays: 14,
-    isHighlight: true,
+    isHighlight: false,
     themeColor: 'hot-pink',
   },
   {
@@ -41,8 +41,8 @@ const initBigDayList = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend lectus nec accumsan.',
     begin: '2021.12.01',
-    end: '2021.12.02',
-    restDays: 1,
+    end: '2021.12.10',
+    restDays: 10,
     isHighlight: false,
     themeColor: 'cold-psink',
   },

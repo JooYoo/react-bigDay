@@ -11,8 +11,13 @@ function BigDayBallList() {
   // get data from BigDayContext
   const [bigDayList, setBigDayList] = useContext(BigDayContext);
 
-  // iteration bigDayBallList items
-  let bigDayBalls = bigDayList.map((bigDay) => (
+  // get only non-highlight-balls
+  let nonHighlightBigDayBalls = bigDayList.filter(
+    (bigDay) => bigDay.isHighlight === false,
+  );
+
+  // iteration non-highlight-balls
+  let bigDayBalls = nonHighlightBigDayBalls.map((bigDay) => (
     <BigDayInfoProvider key={bigDay.id} value={bigDay}>
       <BigDayBall bigDay={bigDay} />
     </BigDayInfoProvider>
