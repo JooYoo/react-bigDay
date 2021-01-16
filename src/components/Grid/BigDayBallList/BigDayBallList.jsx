@@ -11,7 +11,9 @@ function BigDayBallList() {
   // get data from BigDayContext
   const [bigDayList, setBigDayList] = useContext(BigDayContext);
 
-  // get only non-highlight-balls
+  /* --------------------------- non-highlight-balls -------------------------- */
+
+  // get non-highlight-balls
   let nonHighlightBigDayBalls = bigDayList.filter(
     (bigDay) => bigDay.isHighlight === false,
   );
@@ -22,6 +24,8 @@ function BigDayBallList() {
       <BigDayBall bigDay={bigDay} />
     </BigDayInfoProvider>
   ));
+
+  /* ----------------------------- highlight-ball ----------------------------- */
 
   // get the highLight bigDay
   let hBigDay = bigDayList.find((bigDay) => bigDay.isHighlight === true);

@@ -4,7 +4,14 @@
   --wave-color: rgba(0, 0, 0, 0.9);
 }
 
-$ball-size: 60vmin;
+.ball-size--l {
+  --ball-size: 60vmin;
+}
+
+.ball-size--s {
+  --ball-size: 40vmin;
+}
+
 $ball-padding: 1.3vmin;
 $ball-border: $ball-padding;
 
@@ -13,8 +20,8 @@ $ball-border: $ball-padding;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: $ball-size;
-  height: $ball-size;
+  width: var(--ball-size);
+  height: var(--ball-size);
 }
 
 .container {

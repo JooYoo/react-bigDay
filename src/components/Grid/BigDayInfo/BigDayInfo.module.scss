@@ -1,4 +1,10 @@
-$font-unit: 3vmin;
+.ball-size--l {
+  --font-unit: 3vmin;
+}
+
+.ball-size--s {
+  --font-unit: 2vmin;
+}
 
 .info-container {
   position: absolute;
@@ -13,28 +19,28 @@ $font-unit: 3vmin;
 }
 
 .info-rest-day-text {
-  font-size: 3.75 * $font-unit;
-  -webkit-text-stroke: (0.125 * $font-unit) white;
-  line-height: (2 * $font-unit);
+  font-size: calc(3.75 * var(--font-unit));
+  -webkit-text-stroke: calc(0.125 * var(--font-unit)) white;
+  line-height: calc(2 * var(--font-unit));
 
   &__unit {
-    font-size: (1.125 * $font-unit);
-    -webkit-text-stroke: (0.0375 * $font-unit) white;
+    font-size: calc(1.125 * var(--font-unit));
+    -webkit-text-stroke: calc(0.0375 * var(--font-unit)) white;
     text-shadow: -0.1vmin 0 white, 0 0.1vmin white, 0.1vmin 0 white,
       0 -0.1vmin white;
   }
 }
 
 .info-date-end {
-  font-size: $font-unit;
-  letter-spacing: (0.5 * $font-unit);
+  font-size: var(--font-unit);
+  letter-spacing: calc(0.5 * var(--font-unit));
   text-shadow: white 0 0 0.4vmin, white 0 0 0.4vmin, white 0 0 0.4vmin,
     white 0 0 0.4vmin, white 0 0 0.4vmin, white 0 0 0.4vmin;
 }
 
 .info-title {
   font-family: verdana;
-  font-size: (1.25 * $font-unit);
+  font-size: calc(1.25 * var(--font-unit));
   font-weight: bolder;
   line-height: 10vmin;
   -webkit-text-stroke: 1.5px white;
@@ -44,8 +50,8 @@ $font-unit: 3vmin;
   width: 60%;
   font-family: Verdana;
   text-align: center;
-  font-size: (0.625 * $font-unit);
-  letter-spacing: (0.075 * $font-unit);
+  font-size: calc(0.625 * var(--font-unit));
+  letter-spacing: calc(0.075 * var(--font-unit));
   text-shadow: white 0 0 0.2vmin, white 0 0 0.2vmin, white 0 0 0.2vmin,
     white 0 0 0.2vmin, white 0 0 0.2vmin, white 0 0 0.2vmin;
 }

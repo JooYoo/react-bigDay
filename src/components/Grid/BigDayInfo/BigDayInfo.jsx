@@ -6,8 +6,13 @@ function BigDayInfo() {
   // get data from <BigDayBallList />
   const BigDayInfoConsumer = useContext(BigDayInfoContext);
 
+  // differentiate non / hightlight-ball-text
+  const diffSizeStyle = BigDayInfoConsumer.isHighlight
+    ? bigDayInfoStyle['ball-size--l']
+    : bigDayInfoStyle['ball-size--s'];
+
   return (
-    <div className={bigDayInfoStyle['info-container']}>
+    <div className={`${bigDayInfoStyle['info-container']} ${diffSizeStyle}`}>
       <div className={bigDayInfoStyle['info-rest-day-text']}>
         {BigDayInfoConsumer.restDays}
         <span className={bigDayInfoStyle['info-rest-day-text__unit']}>day</span>

@@ -3,8 +3,13 @@ import BigDayInfo from '../BigDayInfo/BigDayInfo';
 import bigDayBallStyle from './BigDayBall.module.scss';
 
 function BigDayBall(props) {
+  // differentiate non / highlight-ball-size
+  const diffSizeStyle = props.bigDay.isHighlight
+    ? bigDayBallStyle['ball-size--l']
+    : bigDayBallStyle['ball-size--s'];
+
   return (
-    <div className={bigDayBallStyle['wrapper']}>
+    <div className={`${bigDayBallStyle['wrapper']} ${diffSizeStyle}`}>
       <div className={bigDayBallStyle['container']}>
         <div className={bigDayBallStyle['wave']}></div>
         <BigDayInfo />
