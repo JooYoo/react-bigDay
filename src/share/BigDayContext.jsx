@@ -44,7 +44,18 @@ const initBigDayList = [
     end: '2021.12.10',
     restDays: 10,
     isHighlight: false,
-    themeColor: 'cold-psink',
+    themeColor: 'cold-pink',
+  },
+  {
+    id: uuid(),
+    title: 'Biohazard release',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend lectus nec accumsan.',
+    begin: '2021.12.15',
+    end: '2021.12.30',
+    restDays: 15,
+    isHighlight: false,
+    themeColor: 'cold-pink',
   },
 ];
 

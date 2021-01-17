@@ -1,10 +1,13 @@
 .ball-size--l {
-  --font-unit: 3vmin;
+  --font-unit: 2.6vw;
 }
 
 .ball-size--s {
-  --font-unit: 2vmin;
+  --font-unit: 1.8vw;
 }
+
+$date-shadow: calc(0.08 * var(--font-unit));
+$title-stroke: calc(0.07 * var(--font-unit));
 
 .info-container {
   position: absolute;
@@ -34,24 +37,35 @@
 .info-date-end {
   font-size: var(--font-unit);
   letter-spacing: calc(0.5 * var(--font-unit));
-  text-shadow: white 0 0 0.4vmin, white 0 0 0.4vmin, white 0 0 0.4vmin,
-    white 0 0 0.4vmin, white 0 0 0.4vmin, white 0 0 0.4vmin;
+  text-shadow: white 0 0 $date-shadow, white 0 0 $date-shadow,
+    white 0 0 $date-shadow, white 0 0 $date-shadow, white 0 0 $date-shadow,
+    white 0 0 $date-shadow;
 }
 
 .info-title {
   font-family: verdana;
-  font-size: calc(1.25 * var(--font-unit));
   font-weight: bolder;
-  line-height: 10vmin;
-  -webkit-text-stroke: 1.5px white;
+  font-size: calc(1.3 * var(--font-unit));
+  line-height: calc(3.75 * var(--font-unit));
+  -webkit-text-stroke: $title-stroke white;
 }
 
 .info-description {
-  width: 60%;
+  width: 70%;
+  color: rgba(170, 170, 170, 1);
   font-family: Verdana;
-  text-align: center;
   font-size: calc(0.625 * var(--font-unit));
   letter-spacing: calc(0.075 * var(--font-unit));
-  text-shadow: white 0 0 0.2vmin, white 0 0 0.2vmin, white 0 0 0.2vmin,
-    white 0 0 0.2vmin, white 0 0 0.2vmin, white 0 0 0.2vmin;
+  text-align: center;
+}
+
+// responsive
+@media (max-width: 1030px) {
+  .ball-size--l {
+    --font-unit: 3.1vw;
+  }
+
+  .ball-size--s {
+    --font-unit: 2.1vw;
+  }
 }

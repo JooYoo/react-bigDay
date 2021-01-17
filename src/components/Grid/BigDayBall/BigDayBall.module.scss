@@ -1,18 +1,18 @@
 :root {
-  --wave-percent: 20%;
+  --wave-percent: 30%;
   --container-color: rgba(0, 0, 0, 1);
   --wave-color: rgba(0, 0, 0, 0.9);
 }
 
 .ball-size--l {
-  --ball-size: 60vmin;
+  --ball-size: 50vw;
 }
 
 .ball-size--s {
-  --ball-size: 40vmin;
+  --ball-size: 35vw;
 }
 
-$ball-padding: 1.3vmin;
+$ball-padding: 1vw;
 $ball-border: $ball-padding;
 
 .wrapper {
@@ -22,6 +22,7 @@ $ball-border: $ball-padding;
   align-items: center;
   width: var(--ball-size);
   height: var(--ball-size);
+  margin: 3vmin;
 }
 
 .container {
@@ -33,6 +34,7 @@ $ball-border: $ball-padding;
 
   height: 100%;
   width: 100%;
+  white-space: normal;
   overflow: hidden;
 }
 
@@ -74,5 +76,27 @@ $ball-border: $ball-padding;
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+// responsive
+@media (max-width: 1030px) {
+  .ball-size--l {
+    --ball-size: 60vw;
+  }
+
+  .ball-size--s {
+    --ball-size: 40vw;
+  }
+
+  .wrapper {
+    display: inline-block;
+    margin: 1.5vw;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

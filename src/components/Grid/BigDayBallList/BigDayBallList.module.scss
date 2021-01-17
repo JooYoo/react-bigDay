@@ -7,22 +7,27 @@
   }
 
   &--default {
-    //TODO: try grid
-
-    // display: grid;
-    // justify-items: center;
-    // align-items: center;
-
-    // grid-template-columns: 1fr 1fr 1fr;
-    // grid-template-rows: 1fr 0.5fr;
-    // grid-gap: 5vmin;
-    // grid-template-areas:
-    //   'h h b'
-    //   'h h b';
-
-    padding: 5vmin;
-
     height: 100vh;
-    overflow: scroll;
+    overflow: auto;
+  }
+}
+
+// responsive
+@media (max-width: 1030px) {
+  .ball-container {
+    flex-direction: column;
+
+    &--highlight {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 50vh;
+    }
+
+    &--default {
+      margin-top: 3vw;
+      width: 100%;
+      white-space: nowrap;
+    }
   }
 }
