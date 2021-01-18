@@ -82,7 +82,7 @@ $ball-border: $ball-padding;
 // responsive
 @media (max-width: 1030px) {
   .ball-size--l {
-    --ball-size: 60vw;
+    --ball-size: 65vw;
   }
 
   .ball-size--s {
@@ -91,7 +91,7 @@ $ball-border: $ball-padding;
 
   .wrapper {
     display: inline-block;
-    margin: 1.5vw;
+    margin: 2vw 2vw;
   }
 
   .container {
