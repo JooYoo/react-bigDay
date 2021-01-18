@@ -2,5 +2,31 @@
   position: relative;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  // background-color: rgba(0, 0, 0, 0.8);
+  background-image: linear-gradient(
+    to right top,
+    #0b0f41,
+    #002958,
+    #004168,
+    #005870,
+    #006e74,
+    #00777d,
+    #007f87,
+    #008891,
+    #0083ac,
+    #007bcb,
+    #006ce1,
+    #304fe1
+  );
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: 40%;
+    width: 100vw;
+    height: 100vw;
+    background: linear-gradient(#f00, #f0f);
+    border-radius: 50%;
+  }
 }
