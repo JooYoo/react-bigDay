@@ -14,6 +14,7 @@ function BigDayBall(props) {
         <div className={bigDayBallStyle['wave']}></div>
         <BigDayInfo />
       </div>
+      <div className={bigDayBallStyle['color']}></div>
 
       {/* DEV: transfer to the color of Ball */}
       {/* <div>{props.bigDay.themeColor}</div> */}

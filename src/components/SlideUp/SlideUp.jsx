@@ -8,10 +8,25 @@ function SlideUp() {
   /* --------------------------- slide-up animation --------------------------- */
   const onSlideUp = () => {
     setIsSlideUp(!isSlideUp);
+    console.log('clicked');
+  };
+
+  /* ------------------------- slide-up darkner style ------------------------- */
+  const darknerBlur = {
+    opacity: '1',
+  };
+
+  const darknerClear = {
+    opacity: '0',
   };
 
   return (
     <div className={slideUpStyle['slideup-modal-host']}>
+      <div
+        className={slideUpStyle['slideup__darkner']}
+        style={isSlideUp ? darknerBlur : darknerClear}
+        onClick={onSlideUp}
+      ></div>
       <div
         id="slideup__container"
         className={
