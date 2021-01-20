@@ -11,13 +11,18 @@ function BigDayInfo() {
     ? bigDayInfoStyle['ball-size--l']
     : bigDayInfoStyle['ball-size--s'];
 
+  // color for each ball
+  const ballColor = {
+    borderBottom: `${BigDayInfoConsumer.themeColor} 0.5vw solid`,
+  };
+
   return (
     <div className={`${bigDayInfoStyle['info-container']} ${diffSizeStyle}`}>
       <div className={bigDayInfoStyle['info-rest-day-text']}>
         {BigDayInfoConsumer.restDays}
         <span className={bigDayInfoStyle['info-rest-day-text__unit']}>day</span>
       </div>
-      <div className={bigDayInfoStyle['info-date-end']}>
+      <div className={bigDayInfoStyle['info-date-end']} style={ballColor}>
         {BigDayInfoConsumer.end}
       </div>
       <div className={bigDayInfoStyle['info-title']}>

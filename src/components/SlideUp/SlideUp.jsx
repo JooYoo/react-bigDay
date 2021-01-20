@@ -14,10 +14,12 @@ function SlideUp() {
   /* ------------------------- slide-up darkner style ------------------------- */
   const darknerBlur = {
     opacity: '1',
+    pointerEvents: 'auto',
   };
 
   const darknerClear = {
     opacity: '0',
+    pointerEvents: 'none',
   };
 
   return (

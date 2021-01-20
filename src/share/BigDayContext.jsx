@@ -22,7 +22,7 @@ const initBigDayList = [
     end: '2021.06.14',
     restDays: 14,
     isHighlight: false,
-    themeColor: 'hot-pink',
+    themeColor: 'blue',
   },
   {
     id: uuid(),
@@ -33,7 +33,7 @@ const initBigDayList = [
     end: '2021.07.02',
     restDays: 1,
     isHighlight: false,
-    themeColor: 'cold-pink',
+    themeColor: 'red',
   },
   {
     id: uuid(),
@@ -44,7 +44,7 @@ const initBigDayList = [
     end: '2021.12.10',
     restDays: 10,
     isHighlight: false,
-    themeColor: 'cold-pink',
+    themeColor: 'yellow',
   },
   {
     id: uuid(),
@@ -55,7 +55,7 @@ const initBigDayList = [
     end: '2021.12.30',
     restDays: 15,
     isHighlight: false,
-    themeColor: 'cold-pink',
+    themeColor: 'purple',
   },
 ];
 

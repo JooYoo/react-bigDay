@@ -26,13 +26,9 @@ $title-stroke: calc(0.07 * var(--font-unit));
   line-height: calc(2 * var(--font-unit));
   text-shadow: 0.4vw 0.3vw rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 1);
-  // -webkit-text-stroke: calc(0.125 * var(--font-unit)) white;
 
   &__unit {
     font-size: calc(1.125 * var(--font-unit));
-    // -webkit-text-stroke: calc(0.0375 * var(--font-unit)) white;
-    // text-shadow: -0.1vmin 0 white, 0 0.1vmin white, 0.1vmin 0 white,
-    //   0 -0.1vmin white;
   }
   text-shadow: 0.2vw 0.3vw rgba(255, 255, 255, 0.2);
 }
@@ -41,9 +37,7 @@ $title-stroke: calc(0.07 * var(--font-unit));
   font-size: var(--font-unit);
   letter-spacing: calc(0.5 * var(--font-unit));
   color: rgba(255, 255, 255, 1);
-  // text-shadow: white 0 0 $date-shadow, white 0 0 $date-shadow,
-  //   white 0 0 $date-shadow, white 0 0 $date-shadow, white 0 0 $date-shadow,
-  //   white 0 0 $date-shadow;
+  padding-bottom: 0.5vw;
 }
 
 .info-title {
@@ -53,7 +47,6 @@ $title-stroke: calc(0.07 * var(--font-unit));
   line-height: calc(3.75 * var(--font-unit));
   text-shadow: 0.4vw 0.3vw rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 1);
-  // -webkit-text-stroke: $title-stroke white;
 }
 
 .info-description {
