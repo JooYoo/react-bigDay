@@ -31,9 +31,9 @@ $slideup-container-height: 70%;
   height: $slideup-container-height;
 
   border-radius: 10vmin 10vmin 0 0;
-  border: 0.2vw solid rgba(255, 255, 255, 1);
+  border: 0.2vw solid rgba(255, 255, 255, 0.5);
 
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(100px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 1);
 }
@@ -63,6 +63,7 @@ $slideup-container-height: 70%;
 
 .slideup__scroll-panel {
   margin-top: 10vmin;
+  width: 90vw;
 }
 
 .slide-up-anim {

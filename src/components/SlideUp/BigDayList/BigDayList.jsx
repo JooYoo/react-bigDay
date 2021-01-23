@@ -3,6 +3,7 @@ import { BigDayContext } from '../../../share/BigDayContext';
 import BigDayItem from '../BigDayItem/BigDayItem';
 import BigDayForm from '../BigDayForm/BigDayForm';
 import { v4 as uuid } from 'uuid';
+import BigDayListStyle from './BigDayList.module.scss';
 
 function BigDayList() {
   // get data from context
@@ -44,7 +45,7 @@ function BigDayList() {
   };
 
   /* ----------------------- iteration bigDayList items ----------------------- */
-  let bigDays = bigDayList.map((bigDay, index) => (
+  let bigDayItems = bigDayList.map((bigDay, index) => (
     <BigDayItem
       key={bigDay.id}
       id={bigDay.id}
@@ -57,7 +58,12 @@ function BigDayList() {
     <div>
       <BigDayForm addBigDay={addBigDay} />
       <hr />
-      {bigDays}
+      <div className={BigDayListStyle['list-wrapper']}>
+        <div className={BigDayListStyle['list-title']}>List Title</div>
+        <div className={BigDayListStyle['list-items-container']}>
+          {bigDayItems}
+        </div>
+      </div>
     </div>
   );
 }
