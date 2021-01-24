@@ -3,6 +3,7 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
 import * as moment from 'moment';
+import BigDayFormStyle from './BigDayForm.module.scss';
 
 function BigDayForm(props) {
   const initDate = {
@@ -63,44 +64,50 @@ function BigDayForm(props) {
   const colorRef = useRef(null);
 
   return (
-    <form onSubmit={submitFormHandler}>
-      <div>
-        <label>title:</label>
-        <input type="text" value={title} onChange={(e) => setTitleHandler(e)} />
-      </div>
-      <div>
-        <label>description:</label>
-        <textarea
-          cols="5"
-          rows="3"
-          value={description}
-          onChange={(e) => setDescriptionHandler(e)}
-        ></textarea>
-      </div>
-      <div>
-        <label> Date Range: </label>
-        <DateRangePicker
-          startDate={startDate}
-          startDateId="your_unique_start_date_id"
-          endDate={endDate}
-          endDateId="your_unique_end_date_id"
-          onDatesChange={({ startDate, endDate }) =>
-            onDatesChangeHandler({ startDate, endDate })
-          }
-          focusedInput={focusedInput}
-          onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
-          displayFormat="YYYY.MM.DD"
-        />
-      </div>
+    <div className={BigDayFormStyle['wrapper']}>
+      <form onSubmit={submitFormHandler}>
+        <div>
+          <label>title:</label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitleHandler(e)}
+          />
+        </div>
+        <div>
+          <label>description:</label>
+          <textarea
+            cols="5"
+            rows="3"
+            value={description}
+            onChange={(e) => setDescriptionHandler(e)}
+          ></textarea>
+        </div>
+        <div>
+          <label> Date Range: </label>
+          <DateRangePicker
+            startDate={startDate}
+            startDateId="your_unique_start_date_id"
+            endDate={endDate}
+            endDateId="your_unique_end_date_id"
+            onDatesChange={({ startDate, endDate }) =>
+              onDatesChangeHandler({ startDate, endDate })
+            }
+            focusedInput={focusedInput}
+            onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+            displayFormat="YYYY.MM.DD"
+          />
+        </div>
 
-      <div ref={colorRef}>
-        <input name="color" type="radio" value="red" />
-        <input name="color" type="radio" value="blue" />
-        <input name="color" type="radio" value="green" />
-      </div>
+        <div ref={colorRef}>
+          <input name="color" type="radio" value="red" />
+          <input name="color" type="radio" value="blue" />
+          <input name="color" type="radio" value="green" />
+        </div>
 
-      <button type="submit">submit</button>
-    </form>
+        <button type="submit">submit</button>
+      </form>
+    </div>
   );
 }
 

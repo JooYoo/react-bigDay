@@ -3,7 +3,7 @@ import BigDayItemStyle from './BigDayItem.module.scss';
 
 function BigDayItem(props) {
   return (
-    <div className={BigDayItemStyle['list-item-wrapper']}>
+    <div className={BigDayItemStyle['wrapper']}>
       <div className={BigDayItemStyle['list-item__title-container']}>
         <div
           className={BigDayItemStyle['list-item__title-theme-color']}

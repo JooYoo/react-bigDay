@@ -55,10 +55,10 @@ function BigDayList() {
   ));
 
   return (
-    <div>
+    <div className={BigDayListStyle['wrapper']}>
       <BigDayForm addBigDay={addBigDay} />
-      <hr />
-      <div className={BigDayListStyle['list-wrapper']}>
+
+      <div className={BigDayListStyle['container']}>
         <div className={BigDayListStyle['list-title']}>List Title</div>
         <div className={BigDayListStyle['list-items-container']}>
           {bigDayItems}

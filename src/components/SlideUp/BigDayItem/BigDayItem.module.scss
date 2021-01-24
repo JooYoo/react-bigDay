@@ -1,4 +1,4 @@
-.list-item-wrapper {
+.wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,7 +8,7 @@
   font-size: 2vw;
 }
 
-.list-item-wrapper:not(:last-child) {
+.wrapper:not(:last-child) {
   border-bottom: 0.1vh solid rgba(255, 255, 255, 0.2);
 }
 
