@@ -65,26 +65,31 @@ function BigDayForm(props) {
 
   return (
     <div className={BigDayFormStyle['wrapper']}>
-      <form onSubmit={submitFormHandler}>
-        <div>
-          <label>title:</label>
+      <form
+        className={BigDayFormStyle['form-container']}
+        onSubmit={submitFormHandler}
+      >
+        <div className={BigDayFormStyle['form__title']}>Form Title</div>
+        <div className={BigDayFormStyle['form__input-container']}>
           <input
+            className={BigDayFormStyle['form__input']}
             type="text"
+            placeholder="Title"
             value={title}
             onChange={(e) => setTitleHandler(e)}
           />
         </div>
-        <div>
-          <label>description:</label>
+        <div className={BigDayFormStyle['form__input-container']}>
           <textarea
+            className={BigDayFormStyle['form__input']}
+            placeholder="Description"
             cols="5"
             rows="3"
             value={description}
             onChange={(e) => setDescriptionHandler(e)}
           ></textarea>
         </div>
-        <div>
-          <label> Date Range: </label>
+        <div className={BigDayFormStyle['form__input-container']}>
           <DateRangePicker
             startDate={startDate}
             startDateId="your_unique_start_date_id"
@@ -99,13 +104,15 @@ function BigDayForm(props) {
           />
         </div>
 
-        <div ref={colorRef}>
+        <div className={BigDayFormStyle['form__color-picker']} ref={colorRef}>
           <input name="color" type="radio" value="red" />
           <input name="color" type="radio" value="blue" />
           <input name="color" type="radio" value="green" />
         </div>
 
-        <button type="submit">submit</button>
+        <button className={BigDayFormStyle['form__btn--submit']} type="submit">
+          submit
+        </button>
       </form>
     </div>
   );

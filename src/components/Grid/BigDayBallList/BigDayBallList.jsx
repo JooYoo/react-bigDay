@@ -34,12 +34,14 @@ function BigDayBallList() {
     <div className={bigDayBallListStyle['ball-container']}>
       <div className={bigDayBallListStyle['ball-container--highlight']}>
         <BigDayInfoProvider value={hBigDay}>
-          <BigDayBall bigDay={hBigDay} />
+          {/* DEV:  */}
+          {/* <BigDayBall bigDay={hBigDay} /> */}
         </BigDayInfoProvider>
       </div>
 
       <div className={bigDayBallListStyle['ball-container--default']}>
-        {bigDayBalls}
+        {/* DEV:  */}
+        {/* {bigDayBalls} */}
       </div>
     </div>
   );
