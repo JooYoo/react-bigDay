@@ -27,7 +27,8 @@ function BigDayList() {
         begin: begin,
         end: end,
         restDays: restDays,
-        highlightColor: highlightColor,
+        isHighlight: false,
+        themeColor: highlightColor,
       },
     ];
 

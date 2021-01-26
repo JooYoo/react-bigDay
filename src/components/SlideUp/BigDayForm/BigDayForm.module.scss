@@ -58,10 +58,28 @@
   width: 50%;
 }
 
+.form__color-picker__toggle {
+  border: 0.5vw rgba(255, 255, 255, 0.5) solid;
+  border-radius: 50%;
+  padding: 1.5vw;
+  background-color: #03a9f4;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
 .form__color-picker {
-  //   position: absolute;
-  //   left: 50%;
-  //   transform: translateX(-50%);
+  position: absolute;
+  bottom: -6vh;
+
+  border-radius: 20px;
+  padding: 2vw;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .form__btn--submit {
@@ -76,4 +94,12 @@
   color: white;
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }

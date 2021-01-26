@@ -4,6 +4,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
 import * as moment from 'moment';
 import BigDayFormStyle from './BigDayForm.module.scss';
+import { CirclePicker } from 'react-color';
 
 function BigDayForm(props) {
   const initDate = {
@@ -16,6 +17,9 @@ function BigDayForm(props) {
   const [{ startDate, endDate }, setDate] = useState(initDate);
   const [focusedInput, setFocusedInput] = useState(null);
 
+  const [color, setColor] = useState('');
+  const [showColorPicker, setShowColorPicker] = useState(false);
+
   const setTitleHandler = (e) => {
     setTitle(e.target.value);
   };
@@ -24,15 +28,24 @@ function BigDayForm(props) {
     setDescription(e.target.value);
   };
 
+  const setColorHandler = (pickedColor) => {
+    setColor(pickedColor);
+    setShowColorPicker(false);
+  };
+
+  // colorPicker-toggle bg
+  const colorPickerToggleStyle = {
+    backgroundColor: `${color.hex}`,
+  };
+
   const submitFormHandler = (e) => {
     // avoid after submit refresh
     e.preventDefault();
 
-    // title: after add new BigDay clean up textbox
-    setTitle('');
-
-    // description: after add new BigDay clean up textarea
-    setDescription('');
+    // avoid invalid data saving
+    if (!startDate || !endDate || !color) {
+      return;
+    }
 
     // dateRange: formate date
     let startDateFm = moment(startDate).format('YYYY.MM.DD');
@@ -42,9 +55,7 @@ function BigDayForm(props) {
     let restDays = endDate.diff(startDate, 'days');
 
     // color: get color
-    let highlightColor = colorRef.current.querySelectorAll(
-      'input[name="color"]:checked',
-    )[0].value;
+    let highlightColor = color.hex;
 
     // add infos to new BigDay
     props.addBigDay(
@@ -55,13 +66,20 @@ function BigDayForm(props) {
       restDays,
       highlightColor,
     );
+
+    // title: after add new BigDay clean up textbox
+    setTitle('');
+
+    // description: after add new BigDay clean up textarea
+    setDescription('');
+
+    // TODO:
+    setDate(initDate);
   };
 
   const onDatesChangeHandler = ({ startDate, endDate }) => {
     setDate({ startDate, endDate });
   };
-
-  const colorRef = useRef(null);
 
   return (
     <div className={BigDayFormStyle['wrapper']}>
@@ -104,11 +122,20 @@ function BigDayForm(props) {
           />
         </div>
 
-        <div className={BigDayFormStyle['form__color-picker']} ref={colorRef}>
-          <input name="color" type="radio" value="red" />
-          <input name="color" type="radio" value="blue" />
-          <input name="color" type="radio" value="green" />
-        </div>
+        <button
+          className={BigDayFormStyle['form__color-picker__toggle']}
+          style={colorPickerToggleStyle}
+          onClick={() => setShowColorPicker(!showColorPicker)}
+        ></button>
+
+        {showColorPicker && (
+          <div className={BigDayFormStyle['form__color-picker']}>
+            <CirclePicker
+              color={color}
+              onChange={(pickedColor) => setColorHandler(pickedColor)}
+            />
+          </div>
+        )}
 
         <button className={BigDayFormStyle['form__btn--submit']} type="submit">
           submit
