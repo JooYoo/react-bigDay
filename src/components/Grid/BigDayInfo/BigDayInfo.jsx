@@ -1,36 +1,34 @@
-import React, { useContext } from 'react';
-import { BigDayInfoContext } from '../BigDayBallList/BigDayBallList';
+import React from 'react';
 import bigDayInfoStyle from './BigDayInfo.module.scss';
 
-function BigDayInfo() {
+function BigDayInfo(props) {
   // get data from <BigDayBallList />
-  const BigDayInfoConsumer = useContext(BigDayInfoContext);
+  let bigDay = props.bigDay;
 
   // differentiate non / hightlight-ball-text
-  const diffSizeStyle = BigDayInfoConsumer.isHighlight
+  const diffSizeStyle = bigDay.isHighlight
     ? bigDayInfoStyle['ball-size--l']
     : bigDayInfoStyle['ball-size--s'];
 
   // color for each ball
   const ballColor = {
-    borderBottom: `${BigDayInfoConsumer.themeColor} 0.5vw solid`,
+    borderBottom: `${bigDay.themeColor} 0.5vw solid`,
   };
 
   return (
     <div className={`${bigDayInfoStyle['info-container']} ${diffSizeStyle}`}>
       <div className={bigDayInfoStyle['info-rest-day-text']}>
-        {BigDayInfoConsumer.restDays}
+        {bigDay.restDays}
         <span className={bigDayInfoStyle['info-rest-day-text__unit']}>day</span>
       </div>
       <div className={bigDayInfoStyle['info-date-end']} style={ballColor}>
-        {BigDayInfoConsumer.end}
+        {bigDay.end}
       </div>
-      <div className={bigDayInfoStyle['info-title']}>
-        {BigDayInfoConsumer.title}
-      </div>
+      <div className={bigDayInfoStyle['info-title']}>{bigDay.title}</div>
       <div className={bigDayInfoStyle['info-description']}>
-        {BigDayInfoConsumer.description}
+        {bigDay.description}
       </div>
+      {console.log('bigBallInfo: ', props.bigDay.title)}
     </div>
   );
 }

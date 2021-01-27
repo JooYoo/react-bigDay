@@ -1,16 +1,32 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { DateRangePicker } from 'react-dates';
+import { CirclePicker } from 'react-color';
+import * as moment from 'moment';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { DateRangePicker } from 'react-dates';
-import * as moment from 'moment';
 import BigDayFormStyle from './BigDayForm.module.scss';
-import { CirclePicker } from 'react-color';
+import BigDayBall from '../../Grid/BigDayBall/BigDayBall';
+import BigDayInfo from '../../Grid/BigDayInfo/BigDayInfo';
 
 function BigDayForm(props) {
   const initDate = {
     startDate: null,
     endDate: null,
   };
+
+  let initPreviewBigDay = {
+    id: 0,
+    title: 'new ball',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend.',
+    begin: '2021.05.01',
+    end: '2021.05.28',
+    restDays: 0,
+    isHighlight: false,
+    themeColor: 'blue',
+  };
+
+  const [previewBigDay, setPreviewBigDay] = useState(initPreviewBigDay);
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -22,6 +38,8 @@ function BigDayForm(props) {
 
   const setTitleHandler = (e) => {
     setTitle(e.target.value);
+    // update preview ball
+    previewBigDay.title = e.target.value;
   };
 
   const setDescriptionHandler = (e) => {
@@ -73,7 +91,7 @@ function BigDayForm(props) {
     // description: after add new BigDay clean up textarea
     setDescription('');
 
-    // TODO:
+    // dates: after submit clean up
     setDate(initDate);
   };
 
@@ -141,6 +159,12 @@ function BigDayForm(props) {
           submit
         </button>
       </form>
+
+      <div className={BigDayFormStyle['preview-ball-container']}>
+        <BigDayBall isHighlight={false}>
+          <BigDayInfo bigDay={previewBigDay} />
+        </BigDayBall>
+      </div>
     </div>
   );
 }

@@ -1,10 +1,9 @@
 import React from 'react';
-import BigDayInfo from '../BigDayInfo/BigDayInfo';
 import bigDayBallStyle from './BigDayBall.module.scss';
 
 function BigDayBall(props) {
   // differentiate non / highlight-ball-size
-  const diffSizeStyle = props.bigDay.isHighlight
+  const diffSizeStyle = props.isHighlight
     ? bigDayBallStyle['ball-size--l']
     : bigDayBallStyle['ball-size--s'];
 
@@ -12,14 +11,11 @@ function BigDayBall(props) {
     <div className={`${bigDayBallStyle['wrapper']} ${diffSizeStyle}`}>
       <div className={bigDayBallStyle['container']}>
         <div className={bigDayBallStyle['wave']}></div>
-        <BigDayInfo />
+        {props.children}
       </div>
 
       {/* TODO: diff color for each ball */}
       <div className={bigDayBallStyle['color']}></div>
-
-      {/* DEV: transfer to the color of Ball */}
-      {/* <div>{props.bigDay.themeColor}</div> */}
     </div>
   );
 }

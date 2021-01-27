@@ -1,4 +1,7 @@
 .wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   padding: 5vh 2vw;
   border: 0;
   border-radius: 2vw;
@@ -7,9 +10,9 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   background-image: linear-gradient(
     200deg,
-    #ebf928 0%,
-    #f94b70 40%,
-    #d425b5 80%
+    #ebf92899 0%,
+    #f94b7099 40%,
+    #d425b599 80%
   );
 }
 
@@ -62,7 +65,7 @@
   border: 0.5vw rgba(255, 255, 255, 0.5) solid;
   border-radius: 50%;
   padding: 1.5vw;
-  background-color: #03a9f4;
+  background-color: #f40373;
 
   &:focus {
     outline: none;
@@ -102,4 +105,8 @@
   &:active {
     transform: scale(0.95);
   }
+}
+
+.preview-ball-container {
+  transform: translateY(-5vh);
 }

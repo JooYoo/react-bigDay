@@ -1,6 +1,7 @@
 import React, { useContext, createContext } from 'react';
 import { BigDayContext } from '../../../share/BigDayContext';
 import BigDayBall from '../BigDayBall/BigDayBall';
+import BigDayInfo from '../BigDayInfo/BigDayInfo';
 import bigDayBallListStyle from './BigDayBallList.module.scss';
 
 // pass data to <BigDayInfo /> directly
@@ -21,7 +22,10 @@ function BigDayBallList() {
   // iteration non-highlight-balls
   let bigDayBalls = nonHighlightBigDayBalls.map((bigDay) => (
     <BigDayInfoProvider key={bigDay.id} value={bigDay}>
-      <BigDayBall bigDay={bigDay} />
+      {/* DEV:  */}
+      {/* <BigDayBall isHighlight={false}>
+        <BigDayInfo bigDay={bigDay} />
+      </BigDayBall> */}
     </BigDayInfoProvider>
   ));
 
@@ -35,13 +39,14 @@ function BigDayBallList() {
       <div className={bigDayBallListStyle['ball-container--highlight']}>
         <BigDayInfoProvider value={hBigDay}>
           {/* DEV:  */}
-          {/* <BigDayBall bigDay={hBigDay} /> */}
+          {/* <BigDayBall isHighlight={true}>
+            <BigDayInfo bigDay={hBigDay} />
+          </BigDayBall> */}
         </BigDayInfoProvider>
       </div>
 
       <div className={bigDayBallListStyle['ball-container--default']}>
-        {/* DEV:  */}
-        {/* {bigDayBalls} */}
+        {bigDayBalls}
       </div>
     </div>
   );
