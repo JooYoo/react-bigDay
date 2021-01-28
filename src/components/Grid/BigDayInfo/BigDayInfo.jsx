@@ -28,7 +28,6 @@ function BigDayInfo(props) {
       <div className={bigDayInfoStyle['info-description']}>
         {bigDay.description}
       </div>
-      {console.log('bigBallInfo: ', props.bigDay.title)}
     </div>
   );
 }

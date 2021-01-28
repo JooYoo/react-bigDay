@@ -23,7 +23,7 @@ function BigDayForm(props) {
     end: '2021.05.28',
     restDays: 0,
     isHighlight: false,
-    themeColor: 'blue',
+    themeColor: '#f40373',
   };
 
   const [previewBigDay, setPreviewBigDay] = useState(initPreviewBigDay);
@@ -38,22 +38,39 @@ function BigDayForm(props) {
 
   const setTitleHandler = (e) => {
     setTitle(e.target.value);
-    // update preview ball
+    // update preview-ball: title
     previewBigDay.title = e.target.value;
   };
 
   const setDescriptionHandler = (e) => {
     setDescription(e.target.value);
+    // update preview-ball: description
+    previewBigDay.description = e.target.value;
+    // fix minimal width
   };
 
   const setColorHandler = (pickedColor) => {
     setColor(pickedColor);
+    // close color-pannel
     setShowColorPicker(false);
+    // update preview-ball: color
+    previewBigDay.themeColor = pickedColor.hex;
   };
 
   // colorPicker-toggle bg
   const colorPickerToggleStyle = {
     backgroundColor: `${color.hex}`,
+  };
+
+  const onDatesChangeHandler = ({ startDate, endDate }) => {
+    setDate({ startDate, endDate });
+    // update preview-ball: start/endDate
+    if (endDate) {
+      previewBigDay.begin = moment(startDate).format('YYYY.MM.DD');
+      previewBigDay.end = moment(endDate).format('YYYY.MM.DD');
+      // update preview-ball: resetDays
+      previewBigDay.restDays = endDate.diff(startDate, 'days');
+    }
   };
 
   const submitFormHandler = (e) => {
@@ -93,10 +110,6 @@ function BigDayForm(props) {
 
     // dates: after submit clean up
     setDate(initDate);
-  };
-
-  const onDatesChangeHandler = ({ startDate, endDate }) => {
-    setDate({ startDate, endDate });
   };
 
   return (
