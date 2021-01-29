@@ -1,5 +1,5 @@
-// DEV: 7% => 70%
-$slideup-container-height: 70%;
+// DEV: 7% => 80%
+$slideup-container-height: 80%;
 
 .slideup-modal-host {
   position: absolute;
@@ -78,7 +78,7 @@ $slideup-container-height: 70%;
     height: 1%;
   }
   100% {
-    height: 58%;
+    height: 80%;
   }
 }
 
@@ -88,10 +88,10 @@ $slideup-container-height: 70%;
 
 @keyframes slide-down-anim {
   0% {
-    height: 58%;
+    height: 80%;
   }
   50% {
-    height: 65%;
+    height: 87%;
   }
   100% {
     height: $slideup-container-height;
