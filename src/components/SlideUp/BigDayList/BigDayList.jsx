@@ -46,7 +46,7 @@ function BigDayList() {
   };
 
   /* ----------------------- iteration bigDayList items ----------------------- */
-  let bigDayItems = bigDayList.map((bigDay, index) => (
+  let bigDayItems = bigDayList.map((bigDay) => (
     <BigDayItem
       key={bigDay.id}
       id={bigDay.id}

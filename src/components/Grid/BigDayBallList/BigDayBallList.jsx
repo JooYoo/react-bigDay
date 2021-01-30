@@ -23,9 +23,9 @@ function BigDayBallList() {
   let bigDayBalls = nonHighlightBigDayBalls.map((bigDay) => (
     <BigDayInfoProvider key={bigDay.id} value={bigDay}>
       {/* DEV:  */}
-      {/* <BigDayBall isHighlight={false}>
+      <BigDayBall isHighlight={false}>
         <BigDayInfo bigDay={bigDay} />
-      </BigDayBall> */}
+      </BigDayBall>
     </BigDayInfoProvider>
   ));
 
@@ -39,9 +39,9 @@ function BigDayBallList() {
       <div className={bigDayBallListStyle['ball-container--highlight']}>
         <BigDayInfoProvider value={hBigDay}>
           {/* DEV:  */}
-          {/* <BigDayBall isHighlight={true}>
+          <BigDayBall isHighlight={true}>
             <BigDayInfo bigDay={hBigDay} />
-          </BigDayBall> */}
+          </BigDayBall>
         </BigDayInfoProvider>
       </div>
 
