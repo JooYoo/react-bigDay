@@ -1,7 +1,6 @@
 :root {
   --wave-percent: 30%;
   --container-color: rgba(0, 0, 0, 1);
-  // --wave-color: rgba(0, 0, 0, 0.9);
   --wave-color: transparent;
 }
 
@@ -41,13 +40,6 @@ $ball-border: $ball-padding;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
-// .color {
-//   height: 100%;
-//   width: 100%;
-//   border-radius: 50%;
-//   background-color: salmon;
-// }
-
 .wave {
   position: relative;
   border-radius: 50%;
@@ -64,8 +56,7 @@ $ball-border: $ball-padding;
   width: 300%;
   height: 300%;
   left: -100%;
-  top: 40%;
-  // top: calc((200% - var(--wave-percent)) * -1);
+  top: var(--wave-percent);
 }
 
 .wave::before {

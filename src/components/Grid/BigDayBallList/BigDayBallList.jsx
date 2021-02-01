@@ -21,12 +21,10 @@ function BigDayBallList() {
 
   // iteration non-highlight-balls
   let bigDayBalls = nonHighlightBigDayBalls.map((bigDay) => (
-    <BigDayInfoProvider key={bigDay.id} value={bigDay}>
-      {/* DEV:  */}
-      <BigDayBall isHighlight={false}>
-        <BigDayInfo bigDay={bigDay} />
-      </BigDayBall>
-    </BigDayInfoProvider>
+    //  DEV:
+    <BigDayBall key={bigDay.id} isHighlight={false} bigDay={bigDay}>
+      <BigDayInfo bigDay={bigDay} />
+    </BigDayBall>
   ));
 
   /* ----------------------------- highlight-ball ----------------------------- */
@@ -37,16 +35,15 @@ function BigDayBallList() {
   return (
     <div className={bigDayBallListStyle['ball-container']}>
       <div className={bigDayBallListStyle['ball-container--highlight']}>
-        <BigDayInfoProvider value={hBigDay}>
-          {/* DEV:  */}
-          <BigDayBall isHighlight={true}>
-            <BigDayInfo bigDay={hBigDay} />
-          </BigDayBall>
-        </BigDayInfoProvider>
+        {/* DEV:  */}
+        <BigDayBall isHighlight={true} bigDay={hBigDay}>
+          <BigDayInfo bigDay={hBigDay} />
+        </BigDayBall>
       </div>
 
       <div className={bigDayBallListStyle['ball-container--default']}>
         {bigDayBalls}
+        <div>{console.log('non')}</div>
       </div>
     </div>
   );

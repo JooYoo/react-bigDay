@@ -63,6 +63,7 @@ const BigDayContext = createContext();
 
 const BigDayProvider = (props) => {
   const [bigDayList, setBigDayList] = useState(initBigDayList);
+  console.log(`ContextProvider: ${bigDayList}`);
 
   return (
     <BigDayContext.Provider value={[bigDayList, setBigDayList]}>

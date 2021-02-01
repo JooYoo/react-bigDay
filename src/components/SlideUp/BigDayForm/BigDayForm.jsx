@@ -14,6 +14,7 @@ function BigDayForm(props) {
     endDate: null,
   };
 
+  // TODO: init day should make sense
   let initPreviewBigDay = {
     id: 0,
     title: 'new ball',
@@ -69,6 +70,7 @@ function BigDayForm(props) {
       previewBigDay.begin = moment(startDate).format('YYYY.MM.DD');
       previewBigDay.end = moment(endDate).format('YYYY.MM.DD');
       // update preview-ball: resetDays
+      // TODO: restDays shoulbe calculate between todayDate and endDate
       previewBigDay.restDays = endDate.diff(startDate, 'days');
     }
   };
@@ -174,7 +176,7 @@ function BigDayForm(props) {
       </form>
 
       <div className={BigDayFormStyle['preview-ball-container']}>
-        <BigDayBall isHighlight={false}>
+        <BigDayBall bigDay={previewBigDay} isHighlight={false}>
           <BigDayInfo bigDay={previewBigDay} />
         </BigDayBall>
       </div>
