@@ -18,7 +18,7 @@ function BigDayInfo(props) {
   return (
     <div className={`${bigDayInfoStyle['info-container']} ${diffSizeStyle}`}>
       <div className={bigDayInfoStyle['info-rest-day-text']}>
-        {bigDay.restDays}
+        {bigDay.totalDays}
         <span className={bigDayInfoStyle['info-rest-day-text__unit']}>day</span>
       </div>
       <div className={bigDayInfoStyle['info-date-end']} style={ballColor}>

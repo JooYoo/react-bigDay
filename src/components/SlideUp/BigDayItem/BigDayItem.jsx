@@ -59,7 +59,7 @@ function BigDayItem(props) {
           </div>
         </div>
         <div className={BigDayItemStyle['list-item__date--rest-days']}>
-          {props.bigDay.restDays}
+          {props.bigDay.totalDays}
         </div>
       </div>
       <button

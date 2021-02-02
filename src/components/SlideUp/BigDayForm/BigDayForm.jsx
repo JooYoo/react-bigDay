@@ -22,7 +22,7 @@ function BigDayForm(props) {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend.',
     begin: '2021.05.01',
     end: '2021.05.28',
-    restDays: 0,
+    totalDays: 0,
     isHighlight: false,
     themeColor: '#f40373',
   };
@@ -70,8 +70,8 @@ function BigDayForm(props) {
       previewBigDay.begin = moment(startDate).format('YYYY.MM.DD');
       previewBigDay.end = moment(endDate).format('YYYY.MM.DD');
       // update preview-ball: resetDays
-      // TODO: restDays shoulbe calculate between todayDate and endDate
-      previewBigDay.restDays = endDate.diff(startDate, 'days');
+      // TODO: totalDays shoulbe calculate between todayDate and endDate
+      previewBigDay.totalDays = endDate.diff(startDate, 'days');
     }
   };
 
@@ -80,7 +80,7 @@ function BigDayForm(props) {
     e.preventDefault();
 
     // avoid invalid data saving
-    if (!startDate || !endDate || !color) {
+    if (!startDate || !endDate) {
       return;
     }
 
@@ -88,11 +88,11 @@ function BigDayForm(props) {
     let startDateFm = moment(startDate).format('YYYY.MM.DD');
     let endDateFm = moment(endDate).format('YYYY.MM.DD');
 
-    // restDay: get rest days
-    let restDays = endDate.diff(startDate, 'days');
+    // totalDays: get totalDays
+    let totalDays = endDate.diff(startDate, 'days');
 
     // color: get color
-    let highlightColor = color.hex;
+    let highlightColor = !color ? '#f40373' : color.hex;
 
     // add infos to new BigDay
     props.addBigDay(
@@ -100,7 +100,7 @@ function BigDayForm(props) {
       description,
       startDateFm,
       endDateFm,
-      restDays,
+      totalDays,
       highlightColor,
     );
 

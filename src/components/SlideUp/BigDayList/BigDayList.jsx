@@ -15,7 +15,7 @@ function BigDayList() {
     description,
     begin,
     end,
-    restDays,
+    totalDays,
     highlightColor,
   ) => {
     const newBigDayList = [
@@ -26,7 +26,7 @@ function BigDayList() {
         description: description,
         begin: begin,
         end: end,
-        restDays: restDays,
+        totalDays: totalDays,
         isHighlight: false,
         themeColor: highlightColor,
       },

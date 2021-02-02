@@ -10,10 +10,25 @@ function BigDayBall(props) {
 
   // calc restDays => wavePercent
   const getWavePercent = () => {
-    const endDate = props.bigDay.id;
-    // const restDays = props.bigDay.restDays;
-    if (endDate !== 0) {
-      console.log(endDate);
+    const startDate = moment(props.bigDay.begin);
+    const endDate = moment(props.bigDay.end);
+    const currentDate = moment();
+
+    // get restDays
+    const restDays = moment(endDate.diff(currentDate, 'days'))._i;
+
+    // calc wavePercent
+    const totalDays = props.bigDay.totalDays;
+    let wavePercent = '';
+    // check if startDate is future date
+    startDate.isAfter(currentDate)
+      ? (wavePercent = '100%')
+      : (wavePercent = `${(restDays / totalDays).toFixed(2) * 100}%`);
+
+    // skip preview-ball
+    if (props.bigDay.id !== 0) {
+      // TODO: set wavePercent to UI
+      console.log(props.bigDay.title, wavePercent);
     }
   };
 
@@ -28,7 +43,6 @@ function BigDayBall(props) {
         {props.children}
       </div>
 
-      {/* TODO: diff color for each ball */}
       <div className={bigDayBallStyle['color']}></div>
     </div>
   );
