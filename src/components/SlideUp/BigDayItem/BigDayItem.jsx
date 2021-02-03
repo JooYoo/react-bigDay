@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import * as moment from 'moment';
 import { BigDayContext } from '../../../share/BigDayContext';
 import BigDayItemStyle from './BigDayItem.module.scss';
 
@@ -22,9 +23,14 @@ function BigDayItem(props) {
 
     // update state
     setBigDayList(newBigDayList);
-    console.table(newBigDayList);
   };
 
+  // calc restDays
+  const endDate = moment(props.bigDay.end);
+  const currentDate = moment();
+  const restDays = moment(endDate.diff(currentDate, 'days'))._i;
+
+  // set item highlight style
   let highlightTureStyle = {
     backgroundColor: `${props.bigDay.themeColor}`,
     boxShadow: '0 0 1vw 0.2vw white, 0 0 1vw 0.3vw rgba(255,255,255,0.1)',
@@ -59,7 +65,7 @@ function BigDayItem(props) {
           </div>
         </div>
         <div className={BigDayItemStyle['list-item__date--rest-days']}>
-          {props.bigDay.totalDays}
+          {restDays} / {props.bigDay.totalDays}
         </div>
       </div>
       <button

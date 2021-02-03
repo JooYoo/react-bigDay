@@ -14,14 +14,14 @@ function BigDayForm(props) {
     endDate: null,
   };
 
-  // TODO: init day should make sense
+  // init day should make sense
   let initPreviewBigDay = {
     id: 0,
-    title: 'new ball',
+    title: 'new',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend.',
-    begin: '2021.05.01',
-    end: '2021.05.28',
+    begin: `${moment().format('YYYY.MM.DD')}`,
+    end: `${moment().format('YYYY.MM.DD')}`,
     totalDays: 0,
     isHighlight: false,
     themeColor: '#f40373',
@@ -91,7 +91,7 @@ function BigDayForm(props) {
     // totalDays: get totalDays
     let totalDays = endDate.diff(startDate, 'days');
 
-    // color: get color
+    // color: get color TODO: the color state update is delay
     let highlightColor = !color ? '#f40373' : color.hex;
 
     // add infos to new BigDay

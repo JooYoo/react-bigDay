@@ -1,9 +1,15 @@
 import React from 'react';
+import * as moment from 'moment';
 import bigDayInfoStyle from './BigDayInfo.module.scss';
 
 function BigDayInfo(props) {
   // get data from <BigDayBallList />
   let bigDay = props.bigDay;
+
+  // calc restDays
+  const endDate = moment(props.bigDay.end);
+  const currentDate = moment();
+  const restDays = moment(endDate.diff(currentDate, 'days'))._i;
 
   // differentiate non / hightlight-ball-text
   const diffSizeStyle = bigDay.isHighlight
@@ -18,7 +24,7 @@ function BigDayInfo(props) {
   return (
     <div className={`${bigDayInfoStyle['info-container']} ${diffSizeStyle}`}>
       <div className={bigDayInfoStyle['info-rest-day-text']}>
-        {bigDay.totalDays}
+        {restDays}
         <span className={bigDayInfoStyle['info-rest-day-text__unit']}>day</span>
       </div>
       <div className={bigDayInfoStyle['info-date-end']} style={ballColor}>

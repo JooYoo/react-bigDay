@@ -1,12 +1,8 @@
-import React, { useContext, createContext } from 'react';
+import React, { useContext } from 'react';
 import { BigDayContext } from '../../../share/BigDayContext';
 import BigDayBall from '../BigDayBall/BigDayBall';
 import BigDayInfo from '../BigDayInfo/BigDayInfo';
 import bigDayBallListStyle from './BigDayBallList.module.scss';
-
-// pass data to <BigDayInfo /> directly
-export const BigDayInfoContext = createContext();
-const BigDayInfoProvider = BigDayInfoContext.Provider;
 
 function BigDayBallList() {
   // get data from BigDayContext
