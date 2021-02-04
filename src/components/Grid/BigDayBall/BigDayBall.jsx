@@ -27,7 +27,7 @@ function BigDayBall(props) {
       ? setWavePercent('0%')
       : setWavePercent(`${100 - (restDays / totalDays).toFixed(2) * 100}%`);
 
-    // skip preview-ball
+    // TODO: skip preview-ball
     if (props.bigDay.id !== 0) {
     }
   };

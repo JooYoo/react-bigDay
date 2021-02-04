@@ -112,6 +112,9 @@ function BigDayForm(props) {
 
     // dates: after submit clean up
     setDate(initDate);
+
+    // reset: preview Ball
+    setPreviewBigDay(initPreviewBigDay);
   };
 
   return (
