@@ -24,7 +24,7 @@ function BigDayForm(props) {
     end: `${moment().format('YYYY.MM.DD')}`,
     totalDays: 0,
     isHighlight: false,
-    themeColor: '#f40373',
+    themeColor: 'none',
   };
 
   const [previewBigDay, setPreviewBigDay] = useState(initPreviewBigDay);
@@ -51,7 +51,7 @@ function BigDayForm(props) {
   };
 
   const setColorHandler = (pickedColor) => {
-    setColor(pickedColor);
+    setColor(pickedColor.hex);
     // close color-pannel
     setShowColorPicker(false);
     // update preview-ball: color
@@ -60,7 +60,7 @@ function BigDayForm(props) {
 
   // colorPicker-toggle bg
   const colorPickerToggleStyle = {
-    backgroundColor: `${color.hex}`,
+    backgroundColor: `${color}`,
   };
 
   const onDatesChangeHandler = ({ startDate, endDate }) => {
@@ -69,8 +69,7 @@ function BigDayForm(props) {
     if (endDate) {
       previewBigDay.begin = moment(startDate).format('YYYY.MM.DD');
       previewBigDay.end = moment(endDate).format('YYYY.MM.DD');
-      // update preview-ball: resetDays
-      // TODO: totalDays shoulbe calculate between todayDate and endDate
+      // update preview-ball: totalDays
       previewBigDay.totalDays = endDate.diff(startDate, 'days');
     }
   };
@@ -91,7 +90,7 @@ function BigDayForm(props) {
     // totalDays: get totalDays
     let totalDays = endDate.diff(startDate, 'days');
 
-    // color: get color TODO: the color state update is delay
+    // color: get color
     let highlightColor = !color ? '#f40373' : color.hex;
 
     // add infos to new BigDay
@@ -104,14 +103,18 @@ function BigDayForm(props) {
       highlightColor,
     );
 
-    // title: after add new BigDay clean up textbox
+    // rest: title
     setTitle('');
 
-    // description: after add new BigDay clean up textarea
+    // reset: description
     setDescription('');
 
-    // dates: after submit clean up
+    // reset: dates
     setDate(initDate);
+
+    // TODO: reset: color
+    // setColor(initPreviewBigDay.themeColor);
+    // console.log('color:', color);
 
     // reset: preview Ball
     setPreviewBigDay(initPreviewBigDay);
@@ -159,6 +162,7 @@ function BigDayForm(props) {
         </div>
 
         <button
+          type="button"
           className={BigDayFormStyle['form__color-picker__toggle']}
           style={colorPickerToggleStyle}
           onClick={() => setShowColorPicker(!showColorPicker)}
