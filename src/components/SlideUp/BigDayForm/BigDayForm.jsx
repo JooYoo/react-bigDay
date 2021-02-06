@@ -91,7 +91,7 @@ function BigDayForm(props) {
     let totalDays = endDate.diff(startDate, 'days');
 
     // color: get color
-    let highlightColor = !color ? '#f40373' : color.hex;
+    let highlightColor = !color ? '#f40373' : color;
 
     // add infos to new BigDay
     props.addBigDay(
@@ -112,9 +112,8 @@ function BigDayForm(props) {
     // reset: dates
     setDate(initDate);
 
-    // TODO: reset: color
-    // setColor(initPreviewBigDay.themeColor);
-    // console.log('color:', color);
+    // reset: color
+    setColor('#EFEFEF');
 
     // reset: preview Ball
     setPreviewBigDay(initPreviewBigDay);
