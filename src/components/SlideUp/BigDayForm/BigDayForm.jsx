@@ -14,7 +14,6 @@ function BigDayForm(props) {
     endDate: null,
   };
 
-  // init day should make sense
   let initPreviewBigDay = {
     id: 0,
     title: 'new',
@@ -24,7 +23,7 @@ function BigDayForm(props) {
     end: `${moment().format('YYYY.MM.DD')}`,
     totalDays: 0,
     isHighlight: false,
-    themeColor: 'none',
+    themeColor: '#EFEFEF',
   };
 
   const [previewBigDay, setPreviewBigDay] = useState(initPreviewBigDay);
