@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BigDayContext } from '../../../share/BigDayContext';
+import { BigDayContext } from '../../../context/GlobalState';
 import BigDayBall from '../BigDayBall/BigDayBall';
 import BigDayInfo from '../BigDayInfo/BigDayInfo';
 import bigDayBallListStyle from './BigDayBallList.module.scss';

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import * as moment from 'moment';
-import { BigDayContext } from '../../../share/BigDayContext';
+import { BigDayContext } from '../../../context/GlobalState';
 import BigDayItemStyle from './BigDayItem.module.scss';
 
 function BigDayItem(props) {

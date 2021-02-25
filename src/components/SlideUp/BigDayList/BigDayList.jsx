@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BigDayContext } from '../../../share/BigDayContext';
+import { BigDayContext } from '../../../context/GlobalState';
 import BigDayItem from '../BigDayItem/BigDayItem';
 import BigDayForm from '../BigDayForm/BigDayForm';
 import { v4 as uuid } from 'uuid';

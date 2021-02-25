@@ -1,7 +1,7 @@
 import './App.css';
 import Grid from './components/Grid/Grid';
 import SlideUp from './components/SlideUp/SlideUp';
-import { BigDayProvider } from './share/BigDayContext';
+import { BigDayProvider } from './context/GlobalState';
 
 function App() {
   return (
