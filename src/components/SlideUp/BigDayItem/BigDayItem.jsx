@@ -4,11 +4,12 @@ import { BigDayContext } from '../../../context/GlobalState';
 import BigDayItemStyle from './BigDayItem.module.scss';
 
 function BigDayItem(props) {
-  const [bigDayList, setBigDayList] = useContext(BigDayContext);
+  // const [bigDayList, setBigDayList] = useContext(BigDayContext);
+  const { bigDays } = useContext(BigDayContext);
 
   const toggleIsHiglight = (bigDay) => {
     // clone bigDayList
-    let newBigDayList = [...bigDayList];
+    let newBigDayList = [...bigDays];
 
     // set this item highlight = true
     let selectedItem = newBigDayList.find((item) => item.id === bigDay.id);
@@ -21,8 +22,8 @@ function BigDayItem(props) {
       item.isHighlight = false;
     });
 
-    // update state
-    setBigDayList(newBigDayList);
+    // FIXME: update state
+    // setBigDayList(newBigDayList);
   };
 
   // calc restDays

@@ -6,12 +6,14 @@ import bigDayBallListStyle from './BigDayBallList.module.scss';
 
 function BigDayBallList() {
   // get data from BigDayContext
-  const [bigDayList, setBigDayList] = useContext(BigDayContext);
+  // const [bigDayList, setBigDayList] = useContext(BigDayContext);
+
+  const { bigDays } = useContext(BigDayContext);
 
   /* --------------------------- non-highlight-balls -------------------------- */
 
   // get non-highlight-balls
-  let nonHighlightBigDayBalls = bigDayList.filter(
+  let nonHighlightBigDayBalls = bigDays.filter(
     (bigDay) => bigDay.isHighlight === false,
   );
 
@@ -26,7 +28,7 @@ function BigDayBallList() {
   /* ----------------------------- highlight-ball ----------------------------- */
 
   // get the highLight bigDay
-  let hBigDay = bigDayList.find((bigDay) => bigDay.isHighlight === true);
+  let hBigDay = bigDays.find((bigDay) => bigDay.isHighlight === true);
 
   return (
     <div className={bigDayBallListStyle['ball-container']}>

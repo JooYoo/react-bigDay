@@ -7,7 +7,8 @@ import BigDayListStyle from './BigDayList.module.scss';
 
 function BigDayList() {
   // get data from context
-  const [bigDayList, setBigDayList] = useContext(BigDayContext);
+  // const [bigDayList, setBigDayList] = useContext(BigDayContext);
+  const { bigDays } = useContext(BigDayContext);
 
   /* ----------------------------- add new BigDay ----------------------------- */
   const addBigDay = (
@@ -19,7 +20,7 @@ function BigDayList() {
     highlightColor,
   ) => {
     const newBigDayList = [
-      ...bigDayList,
+      ...bigDays,
       {
         id: uuid(),
         title: title,
@@ -32,21 +33,22 @@ function BigDayList() {
       },
     ];
 
-    setBigDayList(newBigDayList);
+    // FIXME:
+    // setBigDayList(newBigDayList);
   };
 
   /* ------------------------------ remove BigDay ----------------------------- */
   const removeBigDay = (id) => {
     // clone the bigDayList
-    const cloneBigDayList = [...bigDayList];
+    const cloneBigDayList = [...bigDays];
     // remove bigDayItem via filter
     const newBigDays = cloneBigDayList.filter((x) => x.id !== id);
-    // update the state
-    setBigDayList(newBigDays);
+    // FIXME: update the state
+    // setBigDayList(newBigDays);
   };
 
   /* ----------------------- iteration bigDayList items ----------------------- */
-  let bigDayItems = bigDayList.map((bigDay) => (
+  let bigDayItems = bigDays.map((bigDay) => (
     <BigDayItem
       key={bigDay.id}
       id={bigDay.id}

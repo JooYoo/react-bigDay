@@ -3,11 +3,8 @@ import { AppReducer } from './AppReducer';
 import { getBigDays } from './bigDay/BigDayActions';
 import { v4 as uuid } from 'uuid';
 
-const initState =
-  // {
-  // bigDays: [],
-  // };
-  [
+const initState = {
+  bigDays: [
     {
       id: uuid(),
       title: 'release new version',
@@ -41,29 +38,8 @@ const initState =
       isHighlight: false,
       themeColor: 'red',
     },
-    {
-      id: uuid(),
-      title: 'Zelda release',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend lectus nec accumsan.',
-      begin: '2021.02.02',
-      end: '2021.02.20',
-      totalDays: 17,
-      isHighlight: false,
-      themeColor: 'yellow',
-    },
-    {
-      id: uuid(),
-      title: 'Biohazard release',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis eleifend lectus nec accumsan.',
-      begin: '2021.02.02',
-      end: '2021.02.25',
-      totalDays: 22,
-      isHighlight: false,
-      themeColor: 'purple',
-    },
-  ];
+  ],
+};
 
 // create context
 const BigDayContext = createContext();
@@ -76,11 +52,11 @@ const BigDayProvider = ({ children }) => {
 
   return (
     <BigDayContext.Provider
-      // value={{
-      //   bigDays: state.bigDays,
-      //   getBigDays: () => getBigDays(dispatch),
-      // }}
-      value={[bigDayList, setBigDayList]}
+      value={{
+        bigDays: state.bigDays,
+        getBigDays: () => getBigDays(dispatch),
+      }}
+      // value={[bigDayList, setBigDayList]}
     >
       {children}
     </BigDayContext.Provider>
