@@ -1,4 +1,4 @@
-import { GET_BIGDAYS, POST_BIGDAY } from './bigDay/BigDayTypes';
+import { GET_BIGDAYS, POST_BIGDAY, DELETE_BIGDAY } from './bigDay/BigDayTypes';
 
 const AppReducer = (state, action) => {
   switch (action.type) {
@@ -12,6 +12,12 @@ const AppReducer = (state, action) => {
       return {
         ...state,
         bigDays: [...state.bigDays, action.payload],
+      };
+
+    case DELETE_BIGDAY:
+      return {
+        ...state,
+        bigDays: state.bigDays.filter((x) => x.id !== action.payload),
       };
 
     default:

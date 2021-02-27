@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { GET_BIGDAYS, POST_BIGDAY, BIGDAY_ERROR } from './BigDayTypes';
+import {
+  GET_BIGDAYS,
+  POST_BIGDAY,
+  DELETE_BIGDAY,
+  BIGDAY_ERROR,
+} from './BigDayTypes';
 
 /* -------------------------- get bigDays from API -------------------------- */
 
@@ -28,4 +33,13 @@ const postBigDay = (newBigDay, dispatch) => {
   });
 };
 
-export { getBigDays, postBigDay };
+/* ------------------------------ delete bigDay ----------------------------- */
+
+const deleteBigDay = (id, dispatch) => {
+  dispatch({
+    type: DELETE_BIGDAY,
+    payload: id,
+  });
+};
+
+export { getBigDays, postBigDay, deleteBigDay };

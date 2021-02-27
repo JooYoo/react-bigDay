@@ -7,7 +7,7 @@ import BigDayListStyle from './BigDayList.module.scss';
 
 function BigDayList() {
   // get data from context
-  const { bigDays, postBigDay } = useContext(BigDayContext);
+  const { bigDays, postBigDay, deleteBigDay } = useContext(BigDayContext);
 
   /* ----------------------------- add new BigDay ----------------------------- */
   const addBigDay = (
@@ -34,12 +34,7 @@ function BigDayList() {
 
   /* ------------------------------ remove BigDay ----------------------------- */
   const removeBigDay = (id) => {
-    // clone the bigDayList
-    const cloneBigDayList = [...bigDays];
-    // remove bigDayItem via filter
-    const newBigDays = cloneBigDayList.filter((x) => x.id !== id);
-    // FIXME: update the state
-    // setBigDayList(newBigDays);
+    deleteBigDay(id);
   };
 
   /* ----------------------- iteration bigDayList items ----------------------- */

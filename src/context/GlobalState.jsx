@@ -1,6 +1,6 @@
 import React, { useState, createContext, useReducer } from 'react';
 import { AppReducer } from './AppReducer';
-import { getBigDays, postBigDay } from './bigDay/BigDayActions';
+import { getBigDays, postBigDay, deleteBigDay } from './bigDay/BigDayActions';
 import { v4 as uuid } from 'uuid';
 
 const initState = {
@@ -53,6 +53,7 @@ const BigDayProvider = ({ children }) => {
         bigDays: state.bigDays,
         getBigDays: () => getBigDays(dispatch),
         postBigDay: (newBigDay) => postBigDay(newBigDay, dispatch),
+        deleteBigDay: (id) => deleteBigDay(id, dispatch),
       }}
     >
       {children}
