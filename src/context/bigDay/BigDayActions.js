@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_BIGDAYS, BIGDAY_ERROR } from './BigDayTypes';
+import { GET_BIGDAYS, POST_BIGDAY, BIGDAY_ERROR } from './BigDayTypes';
 
 /* -------------------------- get bigDays from API -------------------------- */
 
@@ -19,4 +19,13 @@ const getBigDays = async (dispatch) => {
   }
 };
 
-export { getBigDays };
+/* ----------------------------- add new bigDay ----------------------------- */
+
+const postBigDay = (newBigDay, dispatch) => {
+  dispatch({
+    type: POST_BIGDAY,
+    payload: newBigDay,
+  });
+};
+
+export { getBigDays, postBigDay };

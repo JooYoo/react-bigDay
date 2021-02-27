@@ -1,6 +1,6 @@
 import React, { useState, createContext, useReducer } from 'react';
 import { AppReducer } from './AppReducer';
-import { getBigDays } from './bigDay/BigDayActions';
+import { getBigDays, postBigDay } from './bigDay/BigDayActions';
 import { v4 as uuid } from 'uuid';
 
 const initState = {
@@ -47,16 +47,13 @@ const BigDayContext = createContext();
 const BigDayProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initState);
 
-  // TODO:
-  const [bigDayList, setBigDayList] = useState(initState);
-
   return (
     <BigDayContext.Provider
       value={{
         bigDays: state.bigDays,
         getBigDays: () => getBigDays(dispatch),
+        postBigDay: (newBigDay) => postBigDay(newBigDay, dispatch),
       }}
-      // value={[bigDayList, setBigDayList]}
     >
       {children}
     </BigDayContext.Provider>

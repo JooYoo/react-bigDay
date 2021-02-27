@@ -1,4 +1,4 @@
-import { GET_BIGDAYS } from './bigDay/BigDayTypes';
+import { GET_BIGDAYS, POST_BIGDAY } from './bigDay/BigDayTypes';
 
 const AppReducer = (state, action) => {
   switch (action.type) {
@@ -6,6 +6,12 @@ const AppReducer = (state, action) => {
       return {
         ...state,
         bigDays: action.payload,
+      };
+
+    case POST_BIGDAY:
+      return {
+        ...state,
+        bigDays: [...state.bigDays, action.payload],
       };
 
     default:

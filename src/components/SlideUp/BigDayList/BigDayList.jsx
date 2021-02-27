@@ -7,8 +7,7 @@ import BigDayListStyle from './BigDayList.module.scss';
 
 function BigDayList() {
   // get data from context
-  // const [bigDayList, setBigDayList] = useContext(BigDayContext);
-  const { bigDays } = useContext(BigDayContext);
+  const { bigDays, postBigDay } = useContext(BigDayContext);
 
   /* ----------------------------- add new BigDay ----------------------------- */
   const addBigDay = (
@@ -19,22 +18,18 @@ function BigDayList() {
     totalDays,
     highlightColor,
   ) => {
-    const newBigDayList = [
-      ...bigDays,
-      {
-        id: uuid(),
-        title: title,
-        description: description,
-        begin: begin,
-        end: end,
-        totalDays: totalDays,
-        isHighlight: false,
-        themeColor: highlightColor,
-      },
-    ];
+    const newBigDay = {
+      id: uuid(),
+      title: title,
+      description: description,
+      begin: begin,
+      end: end,
+      totalDays: totalDays,
+      isHighlight: false,
+      themeColor: highlightColor,
+    };
 
-    // FIXME:
-    // setBigDayList(newBigDayList);
+    postBigDay(newBigDay);
   };
 
   /* ------------------------------ remove BigDay ----------------------------- */
