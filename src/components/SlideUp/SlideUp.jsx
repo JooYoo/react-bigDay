@@ -8,7 +8,6 @@ function SlideUp() {
   /* --------------------------- slide-up animation --------------------------- */
   const onSlideUp = () => {
     setIsSlideUp(!isSlideUp);
-    console.log('clicked');
   };
 
   /* ------------------------- slide-up darkner style ------------------------- */

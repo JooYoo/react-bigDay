@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
   GET_BIGDAYS,
+  UPDATE_BIGDAYS,
   POST_BIGDAY,
   DELETE_BIGDAY,
   BIGDAY_ERROR,
@@ -24,6 +25,15 @@ const getBigDays = async (dispatch) => {
   }
 };
 
+/* ----------------------------- update bigDays ----------------------------- */
+
+const updateBigDays = (newBigDays, dispatch) => {
+  dispatch({
+    type: UPDATE_BIGDAYS,
+    payload: newBigDays,
+  });
+};
+
 /* ----------------------------- add new bigDay ----------------------------- */
 
 const postBigDay = (newBigDay, dispatch) => {
@@ -42,4 +52,4 @@ const deleteBigDay = (id, dispatch) => {
   });
 };
 
-export { getBigDays, postBigDay, deleteBigDay };
+export { getBigDays, updateBigDays, postBigDay, deleteBigDay };

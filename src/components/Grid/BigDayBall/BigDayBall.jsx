@@ -36,7 +36,6 @@ function BigDayBall(props) {
     // skip preview-ball  TODO: why render twice
     if (props.bigDay.id !== 0) {
       getWavePercent();
-      console.table(props.bigDay.title, wavePercent);
     }
   }, [wavePercent]);
 

@@ -6,8 +6,6 @@ import bigDayBallListStyle from './BigDayBallList.module.scss';
 
 function BigDayBallList() {
   // get data from BigDayContext
-  // const [bigDayList, setBigDayList] = useContext(BigDayContext);
-
   const { bigDays } = useContext(BigDayContext);
 
   /* --------------------------- non-highlight-balls -------------------------- */
@@ -41,7 +39,6 @@ function BigDayBallList() {
 
       <div className={bigDayBallListStyle['ball-container--default']}>
         {bigDayBalls}
-        <div>{console.log('non')}</div>
       </div>
     </div>
   );
