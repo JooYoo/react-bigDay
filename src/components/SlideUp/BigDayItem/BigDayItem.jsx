@@ -1,11 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import * as moment from 'moment';
 import { BigDayContext } from '../../../context/GlobalState';
 import BigDayItemStyle from './BigDayItem.module.scss';
 
 function BigDayItem(props) {
   // const [bigDayList, setBigDayList] = useContext(BigDayContext);
-  const { bigDays, updateBigDays } = useContext(BigDayContext);
+  const { bigDays, getBigDays, updateBigDays } = useContext(BigDayContext);
+
+  useEffect(() => {
+    getBigDays();
+  }, []);
 
   const toggleIsHiglight = (bigDay) => {
     // clone bigDayList

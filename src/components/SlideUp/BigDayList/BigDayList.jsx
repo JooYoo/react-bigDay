@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BigDayContext } from '../../../context/GlobalState';
 import BigDayItem from '../BigDayItem/BigDayItem';
 import BigDayForm from '../BigDayForm/BigDayForm';
@@ -7,7 +7,15 @@ import BigDayListStyle from './BigDayList.module.scss';
 
 function BigDayList() {
   // get data from context
-  const { bigDays, postBigDay, deleteBigDay } = useContext(BigDayContext);
+  const { bigDays, getBigDays, postBigDay, deleteBigDay } = useContext(
+    BigDayContext,
+  );
+
+  /* ------------------------------- get BigDays ------------------------------ */
+  useEffect(() => {
+    getBigDays();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /* ----------------------------- add new BigDay ----------------------------- */
   const addBigDay = (
@@ -37,10 +45,12 @@ function BigDayList() {
     deleteBigDay(id);
   };
 
+  // console.log(bigDays);
+
   /* ----------------------- iteration bigDayList items ----------------------- */
   let bigDayItems = bigDays.map((bigDay) => (
     <BigDayItem
-      key={bigDay.id}
+      key={bigDay._id}
       id={bigDay.id}
       bigDay={bigDay}
       removeBigDay={removeBigDay}

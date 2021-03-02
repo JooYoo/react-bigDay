@@ -3,6 +3,7 @@ import {
   UPDATE_BIGDAYS,
   POST_BIGDAY,
   DELETE_BIGDAY,
+  BIGDAY_ERROR,
 } from './bigDay/BigDayTypes';
 
 const AppReducer = (state, action) => {
@@ -10,6 +11,7 @@ const AppReducer = (state, action) => {
     case GET_BIGDAYS:
       return {
         ...state,
+        loading: false,
         bigDays: action.payload,
       };
 
@@ -29,6 +31,13 @@ const AppReducer = (state, action) => {
       return {
         ...state,
         bigDays: state.bigDays.filter((x) => x.id !== action.payload),
+      };
+
+    case BIGDAY_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
       };
 
     default:
