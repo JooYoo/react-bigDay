@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import { BigDayContext } from '../../../context/GlobalState';
 import BigDayItem from '../BigDayItem/BigDayItem';
 import BigDayForm from '../BigDayForm/BigDayForm';
-import { v4 as uuid } from 'uuid';
 import BigDayListStyle from './BigDayList.module.scss';
 
 function BigDayList() {
@@ -27,7 +26,6 @@ function BigDayList() {
     highlightColor,
   ) => {
     const newBigDay = {
-      id: uuid(),
       title: title,
       description: description,
       begin: begin,
@@ -51,7 +49,7 @@ function BigDayList() {
   let bigDayItems = bigDays.map((bigDay) => (
     <BigDayItem
       key={bigDay._id}
-      id={bigDay.id}
+      id={bigDay._id}
       bigDay={bigDay}
       removeBigDay={removeBigDay}
     />

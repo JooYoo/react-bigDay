@@ -36,11 +36,29 @@ const updateBigDays = (newBigDays, dispatch) => {
 
 /* ----------------------------- add new bigDay ----------------------------- */
 
-const postBigDay = (newBigDay, dispatch) => {
-  dispatch({
-    type: POST_BIGDAY,
-    payload: newBigDay,
-  });
+const postBigDay = async (newBigDay, dispatch) => {
+  // init header-info
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    // add data to api
+    const res = await axios.post('/api/v1/bigDays', newBigDay, config);
+
+    // dispatch data
+    dispatch({
+      type: POST_BIGDAY,
+      payload: res.data.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: BIGDAY_ERROR,
+      payload: err.response.data.error,
+    });
+  }
 };
 
 /* ------------------------------ delete bigDay ----------------------------- */
