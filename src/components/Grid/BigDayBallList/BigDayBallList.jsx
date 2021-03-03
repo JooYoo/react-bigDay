@@ -15,43 +15,40 @@ function BigDayBallList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // TODO: refactoring combine two thing situation to one
   /* --------------------------- non-highlight-balls -------------------------- */
 
-  // get non-highlight-balls
   let nonHighlightBigDayBalls = bigDays.filter(
     (bigDay) => bigDay.isHighlight === false,
   );
 
-  // iteration non-highlight-balls
-  let bigDayBalls = nonHighlightBigDayBalls.map((bigDay) => (
-    <BigDayBall key={bigDay._id} isHighlight={false} bigDay={bigDay}>
-      <BigDayInfo bigDay={bigDay} />
-    </BigDayBall>
-  ));
-
   /* ----------------------------- highlight-ball ----------------------------- */
 
-  // get highlight-ball
   let highlightBigDayBall = bigDays.filter(
     (bigDay) => bigDay.isHighlight === true,
   );
 
-  // iteration highlight-ball
-  let highlightBigDayBalls = highlightBigDayBall.map((bigDay) => (
-    <BigDayBall key={bigDay._id} isHighlight={true} bigDay={bigDay}>
-      <BigDayInfo bigDay={bigDay} />
-    </BigDayBall>
-  ));
+  /* ---------------------- function for balls iteration ---------------------- */
+
+  const iterateBalls = (balls) => {
+    return balls.map((bigDay) => (
+      <BigDayBall
+        key={bigDay._id}
+        isHighlight={bigDay.isHighlight}
+        bigDay={bigDay}
+      >
+        <BigDayInfo bigDay={bigDay} />
+      </BigDayBall>
+    ));
+  };
 
   return (
     <div className={bigDayBallListStyle['ball-container']}>
       <div className={bigDayBallListStyle['ball-container--highlight']}>
-        {highlightBigDayBalls}
+        {iterateBalls(highlightBigDayBall)}
       </div>
 
       <div className={bigDayBallListStyle['ball-container--default']}>
-        {bigDayBalls}
+        {iterateBalls(nonHighlightBigDayBalls)}
       </div>
     </div>
   );
