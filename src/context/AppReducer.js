@@ -30,7 +30,9 @@ const AppReducer = (state, action) => {
     case DELETE_BIGDAY:
       return {
         ...state,
-        bigDays: state.bigDays.filter((x) => x.id !== action.payload),
+        bigDays: state.bigDays.filter(
+          (bigDay) => bigDay._id !== action.payload,
+        ),
       };
 
     case BIGDAY_ERROR:

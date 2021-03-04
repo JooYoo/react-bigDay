@@ -63,11 +63,22 @@ const postBigDay = async (newBigDay, dispatch) => {
 
 /* ------------------------------ delete bigDay ----------------------------- */
 
-const deleteBigDay = (id, dispatch) => {
-  dispatch({
-    type: DELETE_BIGDAY,
-    payload: id,
-  });
+const deleteBigDay = async (id, dispatch) => {
+  try {
+    // delete data from API
+    await axios.delete(`/api/v1/bigDays/${id}`);
+
+    // dispatch data
+    dispatch({
+      type: DELETE_BIGDAY,
+      payload: id,
+    });
+  } catch (err) {
+    dispatch({
+      type: BIGDAY_ERROR,
+      payload: err.response.data.error,
+    });
+  }
 };
 
 export { getBigDays, updateBigDays, postBigDay, deleteBigDay };

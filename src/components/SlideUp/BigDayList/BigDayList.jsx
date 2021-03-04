@@ -6,9 +6,7 @@ import BigDayListStyle from './BigDayList.module.scss';
 
 function BigDayList() {
   // get data from context
-  const { bigDays, getBigDays, postBigDay, deleteBigDay } = useContext(
-    BigDayContext,
-  );
+  const { bigDays, getBigDays, postBigDay } = useContext(BigDayContext);
 
   /* ------------------------------- get BigDays ------------------------------ */
   useEffect(() => {
@@ -38,21 +36,9 @@ function BigDayList() {
     postBigDay(newBigDay);
   };
 
-  /* ------------------------------ remove BigDay ----------------------------- */
-  const removeBigDay = (id) => {
-    deleteBigDay(id);
-  };
-
-  // console.log(bigDays);
-
   /* ----------------------- iteration bigDayList items ----------------------- */
   let bigDayItems = bigDays.map((bigDay) => (
-    <BigDayItem
-      key={bigDay._id}
-      id={bigDay._id}
-      bigDay={bigDay}
-      removeBigDay={removeBigDay}
-    />
+    <BigDayItem key={bigDay._id} bigDay={bigDay} />
   ));
 
   return (

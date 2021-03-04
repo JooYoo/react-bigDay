@@ -3,9 +3,11 @@ import * as moment from 'moment';
 import { BigDayContext } from '../../../context/GlobalState';
 import BigDayItemStyle from './BigDayItem.module.scss';
 
-function BigDayItem(props) {
-  // const [bigDayList, setBigDayList] = useContext(BigDayContext);
-  const { bigDays, getBigDays, updateBigDays } = useContext(BigDayContext);
+function BigDayItem({ bigDay }) {
+  // get data from context
+  const { bigDays, getBigDays, updateBigDays, deleteBigDay } = useContext(
+    BigDayContext,
+  );
 
   useEffect(() => {
     getBigDays();
@@ -32,18 +34,18 @@ function BigDayItem(props) {
   };
 
   // calc restDays
-  const endDate = moment(props.bigDay.end);
+  const endDate = moment(bigDay.end);
   const currentDate = moment();
   const restDays = moment(endDate.diff(currentDate, 'days'))._i;
 
   // set item highlight style
   let highlightTureStyle = {
-    backgroundColor: `${props.bigDay.themeColor}`,
+    backgroundColor: `${bigDay.themeColor}`,
     boxShadow: '0 0 1vw 0.2vw white, 0 0 1vw 0.3vw rgba(255,255,255,0.1)',
   };
 
   let highlightFalseStyle = {
-    backgroundColor: `${props.bigDay.themeColor}`,
+    backgroundColor: `${bigDay.themeColor}`,
     boxShadow: 'unset',
   };
 
@@ -52,31 +54,29 @@ function BigDayItem(props) {
       <div className={BigDayItemStyle['list-item__title-container']}>
         <div
           className={BigDayItemStyle['list-item__title-theme-color']}
-          style={
-            props.bigDay.isHighlight ? highlightTureStyle : highlightFalseStyle
-          }
-          onClick={() => toggleIsHiglight(props.bigDay)}
+          style={bigDay.isHighlight ? highlightTureStyle : highlightFalseStyle}
+          onClick={() => toggleIsHiglight(bigDay)}
         ></div>
         <div className={BigDayItemStyle['list-item__title']}>
-          {props.bigDay.title}
+          {bigDay.title}
         </div>
       </div>
       <div className={BigDayItemStyle['list-item__date-main-wrapper']}>
         <div className={BigDayItemStyle['list-item__date-wrapper']}>
           <div className={BigDayItemStyle['list-item__date--start']}>
-            {props.bigDay.begin}
+            {bigDay.begin}
           </div>
           <div className={BigDayItemStyle['list-item__date--end']}>
-            {props.bigDay.end}
+            {bigDay.end}
           </div>
         </div>
         <div className={BigDayItemStyle['list-item__date--rest-days']}>
-          {restDays} / {props.bigDay.totalDays}
+          {restDays} / {bigDay.totalDays}
         </div>
       </div>
       <button
         className={BigDayItemStyle['list-item__btn']}
-        onClick={() => props.removeBigDay(props.id)}
+        onClick={() => deleteBigDay(bigDay._id)}
       >
         remove
       </button>
