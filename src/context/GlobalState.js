@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import { AppReducer } from './AppReducer';
 import {
   getBigDays,
-  updateBigDays,
+  updateBigDay,
   postBigDay,
   deleteBigDay,
 } from './bigDay/BigDayActions';
@@ -63,7 +63,7 @@ const BigDayProvider = ({ children }) => {
         loading: state.loading,
         error: state.error,
         getBigDays: () => getBigDays(dispatch),
-        updateBigDays: (newBigDays) => updateBigDays(newBigDays, dispatch),
+        updateBigDay: (id, newBigDay) => updateBigDay(id, newBigDay, dispatch),
         postBigDay: (newBigDay) => postBigDay(newBigDay, dispatch),
         deleteBigDay: (id) => deleteBigDay(id, dispatch),
       }}

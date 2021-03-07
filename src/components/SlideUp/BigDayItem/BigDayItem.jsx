@@ -5,7 +5,7 @@ import BigDayItemStyle from './BigDayItem.module.scss';
 
 function BigDayItem({ bigDay }) {
   // get data from context
-  const { bigDays, getBigDays, updateBigDays, deleteBigDay } = useContext(
+  const { bigDays, getBigDays, updateBigDay, deleteBigDay } = useContext(
     BigDayContext,
   );
 
@@ -13,24 +13,30 @@ function BigDayItem({ bigDay }) {
     getBigDays();
   }, []);
 
-  const toggleIsHiglight = (bigDay) => {
-    // clone bigDayList
-    let newBigDays = [...bigDays];
+  const toggleIsHiglight = (thisBigDay) => {
+    // clone bigDays
+    let cloneBigDays = [...bigDays];
 
-    // set this item highlight = true
-    let selectedItem = newBigDays.find((item) => item.id === bigDay.id);
-    selectedItem.isHighlight = true;
+    /* ------------------------- update prevBigDay ------------------------- */
+    // find prevBigDay
+    const prevBigDay = cloneBigDays.find((x) => x.isHighlight === true);
+    // prevBigDay => false
+    const newPrevBigDay = {
+      ...prevBigDay,
+      isHighlight: !prevBigDay.isHighlight,
+    };
 
-    // set others highlight = false
-    newBigDays.forEach((item) => {
-      if (item.id === selectedItem.id) {
-        return;
-      }
-      item.isHighlight = false;
-    });
+    // update data to db
+    updateBigDay(prevBigDay._id, newPrevBigDay);
 
-    // update state
-    updateBigDays(newBigDays);
+    /* ---------------------------- update thisBigDay --------------------------- */
+    // thisBigDay => true
+    const newThisBigDay = {
+      ...thisBigDay,
+      isHighlight: !thisBigDay.isHighlight,
+    };
+    // update data to db
+    updateBigDay(thisBigDay._id, newThisBigDay);
   };
 
   // calc restDays

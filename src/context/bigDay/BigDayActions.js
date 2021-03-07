@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {
   GET_BIGDAYS,
-  UPDATE_BIGDAYS,
+  UPDATE_BIGDAY,
   POST_BIGDAY,
   DELETE_BIGDAY,
   BIGDAY_ERROR,
@@ -27,11 +27,29 @@ const getBigDays = async (dispatch) => {
 
 /* ----------------------------- update bigDays ----------------------------- */
 
-const updateBigDays = (newBigDays, dispatch) => {
-  dispatch({
-    type: UPDATE_BIGDAYS,
-    payload: newBigDays,
-  });
+const updateBigDay = async (id, newBigDay, dispatch) => {
+  // init header-info
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    // update data to api
+    await axios.patch(`/api/v1/bigDays/${id}`, newBigDay, config);
+
+    // dispatch data
+    dispatch({
+      type: UPDATE_BIGDAY,
+      payload: newBigDay,
+    });
+  } catch (err) {
+    dispatch({
+      type: BIGDAY_ERROR,
+      payload: err.response.data.error,
+    });
+  }
 };
 
 /* ----------------------------- add new bigDay ----------------------------- */
@@ -81,4 +99,4 @@ const deleteBigDay = async (id, dispatch) => {
   }
 };
 
-export { getBigDays, updateBigDays, postBigDay, deleteBigDay };
+export { getBigDays, updateBigDay, postBigDay, deleteBigDay };
