@@ -7,6 +7,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import BigDayFormStyle from './BigDayForm.module.scss';
 import BigDayBall from '../../Grid/BigDayBall/BigDayBall';
 import BigDayInfo from '../../Grid/BigDayInfo/BigDayInfo';
+import LoginView from '../LoginView/LoginView';
 
 function BigDayForm(props) {
   const initDate = {
@@ -120,6 +121,8 @@ function BigDayForm(props) {
 
   return (
     <div className={BigDayFormStyle['wrapper']}>
+      <LoginView />
+
       <form
         className={BigDayFormStyle['form-container']}
         onSubmit={submitFormHandler}
