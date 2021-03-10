@@ -8,8 +8,14 @@ import BigDayFormStyle from './BigDayForm.module.scss';
 import BigDayBall from '../../Grid/BigDayBall/BigDayBall';
 import BigDayInfo from '../../Grid/BigDayInfo/BigDayInfo';
 import LoginView from '../LoginView/LoginView';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function BigDayForm(props) {
+  // setup auth info
+  const { user, isAuthenticated } = useAuth0();
+  // the only valide user
+  const validateUserMail = process.env.REACT_APP_WHO_ARE_U;
+
   const initDate = {
     startDate: null,
     endDate: null,
@@ -119,75 +125,94 @@ function BigDayForm(props) {
     setPreviewBigDay(initPreviewBigDay);
   };
 
+  const checkAuth = () => {
+    // check if login
+    let isLoginOk = isAuthenticated ? isAuthenticated : false;
+    // check if user
+    let isUserOk;
+    if (user) {
+      isUserOk = user.email === validateUserMail ? true : false;
+    }
+
+    return isLoginOk && isUserOk;
+  };
+
   return (
     <div className={BigDayFormStyle['wrapper']}>
       <LoginView />
 
-      <form
-        className={BigDayFormStyle['form-container']}
-        onSubmit={submitFormHandler}
-      >
-        <div className={BigDayFormStyle['form__title']}>Form Title</div>
-        <div className={BigDayFormStyle['form__input-container']}>
-          <input
-            className={BigDayFormStyle['form__input']}
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitleHandler(e)}
-          />
-        </div>
-        <div className={BigDayFormStyle['form__input-container']}>
-          <textarea
-            className={BigDayFormStyle['form__input']}
-            placeholder="Description"
-            cols="5"
-            rows="3"
-            value={description}
-            onChange={(e) => setDescriptionHandler(e)}
-          ></textarea>
-        </div>
-        <div className={BigDayFormStyle['form__input-container']}>
-          <DateRangePicker
-            startDate={startDate}
-            startDateId="your_unique_start_date_id"
-            endDate={endDate}
-            endDateId="your_unique_end_date_id"
-            onDatesChange={({ startDate, endDate }) =>
-              onDatesChangeHandler({ startDate, endDate })
-            }
-            focusedInput={focusedInput}
-            onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
-            displayFormat="YYYY.MM.DD"
-          />
-        </div>
+      {isAuthenticated && (
+        <>
+          <form
+            className={BigDayFormStyle['form-container']}
+            onSubmit={submitFormHandler}
+          >
+            <div className={BigDayFormStyle['form__title']}>Form Title</div>
+            <div className={BigDayFormStyle['form__input-container']}>
+              <input
+                className={BigDayFormStyle['form__input']}
+                type="text"
+                placeholder="Title"
+                value={title}
+                onChange={(e) => setTitleHandler(e)}
+              />
+            </div>
+            <div className={BigDayFormStyle['form__input-container']}>
+              <textarea
+                className={BigDayFormStyle['form__input']}
+                placeholder="Description"
+                cols="5"
+                rows="3"
+                value={description}
+                onChange={(e) => setDescriptionHandler(e)}
+              ></textarea>
+            </div>
+            <div className={BigDayFormStyle['form__input-container']}>
+              <DateRangePicker
+                startDate={startDate}
+                startDateId="your_unique_start_date_id"
+                endDate={endDate}
+                endDateId="your_unique_end_date_id"
+                onDatesChange={({ startDate, endDate }) =>
+                  onDatesChangeHandler({ startDate, endDate })
+                }
+                focusedInput={focusedInput}
+                onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+                displayFormat="YYYY.MM.DD"
+              />
+            </div>
 
-        <button
-          type="button"
-          className={BigDayFormStyle['form__color-picker__toggle']}
-          style={colorPickerToggleStyle}
-          onClick={() => setShowColorPicker(!showColorPicker)}
-        ></button>
+            <button
+              type="button"
+              className={BigDayFormStyle['form__color-picker__toggle']}
+              style={colorPickerToggleStyle}
+              onClick={() => setShowColorPicker(!showColorPicker)}
+            ></button>
 
-        {showColorPicker && (
-          <div className={BigDayFormStyle['form__color-picker']}>
-            <CirclePicker
-              color={color}
-              onChange={(pickedColor) => setColorHandler(pickedColor)}
-            />
+            {showColorPicker && (
+              <div className={BigDayFormStyle['form__color-picker']}>
+                <CirclePicker
+                  color={color}
+                  onChange={(pickedColor) => setColorHandler(pickedColor)}
+                />
+              </div>
+            )}
+
+            <button
+              className={BigDayFormStyle['form__btn--submit']}
+              type="submit"
+            >
+              submit
+            </button>
+          </form>
+
+          <div className={BigDayFormStyle['preview-ball-container']}>
+            <BigDayBall bigDay={previewBigDay} isHighlight={false}>
+              <BigDayInfo bigDay={previewBigDay} />
+            </BigDayBall>
           </div>
-        )}
-
-        <button className={BigDayFormStyle['form__btn--submit']} type="submit">
-          submit
-        </button>
-      </form>
-
-      <div className={BigDayFormStyle['preview-ball-container']}>
-        <BigDayBall bigDay={previewBigDay} isHighlight={false}>
-          <BigDayInfo bigDay={previewBigDay} />
-        </BigDayBall>
-      </div>
+        </>
+      )}
     </div>
   );
 }
