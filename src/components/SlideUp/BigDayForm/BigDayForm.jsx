@@ -9,10 +9,11 @@ import BigDayBall from '../../Grid/BigDayBall/BigDayBall';
 import BigDayInfo from '../../Grid/BigDayInfo/BigDayInfo';
 import LoginView from '../LoginView/LoginView';
 import { useAuth0 } from '@auth0/auth0-react';
+import { RiLogoutCircleRLine } from 'react-icons/ri';
 
 function BigDayForm(props) {
   // setup auth info
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, logout } = useAuth0();
   // the only valide user
   const validateUserMail = process.env.REACT_APP_WHO_ARE_U;
 
@@ -126,9 +127,9 @@ function BigDayForm(props) {
   };
 
   const checkAuth = () => {
-    // check if login
+    // check if login validate
     let isLoginOk = isAuthenticated ? isAuthenticated : false;
-    // check if user
+    // check if user validate
     let isUserOk;
     if (user) {
       isUserOk = user.email === validateUserMail ? true : false;
@@ -139,10 +140,13 @@ function BigDayForm(props) {
 
   return (
     <div className={BigDayFormStyle['wrapper']}>
-      <LoginView />
-
-      {isAuthenticated && (
+      {checkAuth() ? (
         <>
+          <RiLogoutCircleRLine
+            size={'2vmin'}
+            className={BigDayFormStyle['btn-logout']}
+            onClick={() => logout()}
+          />
           <form
             className={BigDayFormStyle['form-container']}
             onSubmit={submitFormHandler}
@@ -212,6 +216,8 @@ function BigDayForm(props) {
             </BigDayBall>
           </div>
         </>
+      ) : (
+        <LoginView />
       )}
     </div>
   );
