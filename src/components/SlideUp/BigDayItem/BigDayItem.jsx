@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import * as moment from 'moment';
 import { BigDayContext } from '../../../context/GlobalState';
 import BigDayItemStyle from './BigDayItem.module.scss';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function BigDayItem({ bigDay }) {
   // get data from context
@@ -13,7 +14,41 @@ function BigDayItem({ bigDay }) {
     getBigDays();
   }, []);
 
+  /* -------------------------------------------------------------------------- */
+  /*                            check Authentication                            */
+  /* -------------------------------------------------------------------------- */
+  // setup auth info
+  const { user, isAuthenticated } = useAuth0();
+  // get valide usermail
+  const validateUserMail = process.env.REACT_APP_WHO_ARE_U;
+
+  // check is auth ok
+  const isAuthOk = () => {
+    // check if login validate
+    let isLoginOk = isAuthenticated ? isAuthenticated : false;
+    // check if user validate
+    let isUserOk;
+    if (user) {
+      isUserOk = user.email === validateUserMail ? true : false;
+    }
+
+    return isLoginOk && isUserOk;
+  };
+
+  /* -------------------------------------------------------------------------- */
+  /*                click highlight point to toggle highlight day               */
+  /* -------------------------------------------------------------------------- */
   const toggleIsHiglight = (thisBigDay) => {
+    // check clickable via Auth
+    if (!isAuthOk()) {
+      return;
+    }
+
+    // check if clicked the same item again
+    if (thisBigDay.isHighlight) {
+      return;
+    }
+
     // clone bigDays
     let cloneBigDays = [...bigDays];
 
@@ -39,17 +74,21 @@ function BigDayItem({ bigDay }) {
     updateBigDay(thisBigDay._id, newThisBigDay);
   };
 
-  // calc restDays
+  /* -------------------------------------------------------------------------- */
+  /*                                calc restDays                               */
+  /* -------------------------------------------------------------------------- */
   const endDate = moment(bigDay.end);
   const currentDate = moment();
   const restDays = moment(endDate.diff(currentDate, 'days'))._i;
 
-  // set item highlight style
+  /* -------------------------------------------------------------------------- */
+  /*                               dynamic styles                               */
+  /* -------------------------------------------------------------------------- */
+  // set item highlight color
   let highlightTureStyle = {
     backgroundColor: `${bigDay.themeColor}`,
     boxShadow: '0 0 1vw 0.2vw white, 0 0 1vw 0.3vw rgba(255,255,255,0.1)',
   };
-
   let highlightFalseStyle = {
     backgroundColor: `${bigDay.themeColor}`,
     boxShadow: 'unset',
@@ -58,11 +97,11 @@ function BigDayItem({ bigDay }) {
   return (
     <div className={BigDayItemStyle['wrapper']}>
       <div className={BigDayItemStyle['list-item__title-container']}>
-        <div
+        <button
           className={BigDayItemStyle['list-item__title-theme-color']}
           style={bigDay.isHighlight ? highlightTureStyle : highlightFalseStyle}
           onClick={() => toggleIsHiglight(bigDay)}
-        ></div>
+        ></button>
         <div className={BigDayItemStyle['list-item__title']}>
           {bigDay.title}
         </div>

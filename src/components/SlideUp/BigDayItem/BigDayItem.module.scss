@@ -19,12 +19,14 @@
 }
 
 .list-item__title-theme-color {
+  all: unset;
   border: 0.3vw solid rgba(255, 255, 255, 1);
   margin-right: 2vw;
   border-radius: 50%;
-  width: 1.5vw;
-  height: 1.5vw;
+  width: 0.8vw;
+  height: 0.8vw;
   transition: box-shadow 0.5s ease-in-out;
+  cursor: pointer;
 }
 
 .list-item__title {
