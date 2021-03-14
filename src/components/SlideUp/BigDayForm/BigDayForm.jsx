@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { DateRangePicker } from 'react-dates';
 import { CirclePicker } from 'react-color';
+import { useAuth0 } from '@auth0/auth0-react';
+import { RiLogoutCircleRLine } from 'react-icons/ri';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import * as moment from 'moment';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -8,19 +12,32 @@ import BigDayFormStyle from './BigDayForm.module.scss';
 import BigDayBall from '../../Grid/BigDayBall/BigDayBall';
 import BigDayInfo from '../../Grid/BigDayInfo/BigDayInfo';
 import LoginView from '../LoginView/LoginView';
-import { useAuth0 } from '@auth0/auth0-react';
-import { RiLogoutCircleRLine } from 'react-icons/ri';
 
 function BigDayForm(props) {
+  /* -------------------------------------------------------------------------- */
+  /*                               Authentication                               */
+  /* -------------------------------------------------------------------------- */
+
   // setup auth info
   const { user, isAuthenticated, logout } = useAuth0();
   // the only valide user
   const validateUserMail = process.env.REACT_APP_WHO_ARE_U;
 
-  const initDate = {
-    startDate: null,
-    endDate: null,
+  const checkAuth = () => {
+    // check if login validate
+    let isLoginOk = isAuthenticated ? isAuthenticated : false;
+    // check if user validate
+    let isUserOk;
+    if (user) {
+      isUserOk = user.email === validateUserMail ? true : false;
+    }
+
+    return isLoginOk && isUserOk;
   };
+
+  /* -------------------------------------------------------------------------- */
+  /*                             Preview BigDay Ball                            */
+  /* -------------------------------------------------------------------------- */
 
   let initPreviewBigDay = {
     id: 0,
@@ -36,11 +53,35 @@ function BigDayForm(props) {
 
   const [previewBigDay, setPreviewBigDay] = useState(initPreviewBigDay);
 
+  /* -------------------------------------------------------------------------- */
+  /*                                   Formik                                   */
+  /* -------------------------------------------------------------------------- */
+
+  // fields initial values
+  const initValues = {
+    title: '',
+    description: '',
+    themeColor: '#f40373',
+    startDate: null,
+    endDate: null,
+  };
+
+  // TODO: moved to initValues
+  const initDate = {
+    startDate: null,
+    endDate: null,
+  };
+
+  // handle field error
+  const validateSchema = Yup.object({
+    title: Yup.string().required('Required Title'),
+    description: Yup.string().required('Required Descriptiopn'),
+  });
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [{ startDate, endDate }, setDate] = useState(initDate);
   const [focusedInput, setFocusedInput] = useState(null);
-
   const [color, setColor] = useState('');
   const [showColorPicker, setShowColorPicker] = useState(false);
 
@@ -124,18 +165,6 @@ function BigDayForm(props) {
 
     // reset: preview Ball
     setPreviewBigDay(initPreviewBigDay);
-  };
-
-  const checkAuth = () => {
-    // check if login validate
-    let isLoginOk = isAuthenticated ? isAuthenticated : false;
-    // check if user validate
-    let isUserOk;
-    if (user) {
-      isUserOk = user.email === validateUserMail ? true : false;
-    }
-
-    return isLoginOk && isUserOk;
   };
 
   return (
