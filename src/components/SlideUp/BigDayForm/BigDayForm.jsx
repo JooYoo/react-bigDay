@@ -78,6 +78,16 @@ function BigDayForm(props) {
     description: Yup.string().required('Required Descriptiopn'),
   });
 
+  const onSubmit = (values, onSubmitPorps) => {
+    // submit and save values
+    console.log('onSubmit:', values);
+    // after submit to make sure submitting process is done
+    onSubmitPorps.setSubmitting(false);
+    // clean up the fields
+    onSubmitPorps.resetForm();
+  };
+  /* ---------------------------- TODO: refactoring --------------------------- */
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [{ startDate, endDate }, setDate] = useState(initDate);
@@ -151,6 +161,16 @@ function BigDayForm(props) {
       highlightColor,
     );
 
+    // FIXME: old form result for debug
+    const oldFormResult = {
+      title: title,
+      description: description,
+      startDate: startDate,
+      endDate: endDate,
+      themeColor: highlightColor,
+    };
+    console.table(oldFormResult);
+
     // rest: title
     setTitle('');
 
@@ -176,6 +196,38 @@ function BigDayForm(props) {
             className={BigDayFormStyle['btn-logout']}
             onClick={() => logout()}
           />
+
+          <Formik
+            initialValues={initValues}
+            validationSchema={validateSchema}
+            onSubmit={onSubmit}
+          >
+            <Form className={BigDayFormStyle['form-container']}>
+              <div className={BigDayFormStyle['form__title']}>Form Title</div>
+
+              {/* <div className={BigDayFormStyle['form__input-container']}> */}
+              <Field
+                className={BigDayFormStyle['form__input']}
+                placeholder="title..."
+                type="text"
+                name="title"
+              />
+              <ErrorMessage name="title" />
+              {/* </div> */}
+
+              <Field
+                className={BigDayFormStyle['form__input']}
+                rows="3"
+                placeholder="Description"
+                as="textarea"
+                name="description"
+              />
+              <ErrorMessage name="description" />
+
+              <button type="submit">submit</button>
+            </Form>
+          </Formik>
+
           <form
             className={BigDayFormStyle['form-container']}
             onSubmit={submitFormHandler}
