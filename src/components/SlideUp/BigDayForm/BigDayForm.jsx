@@ -62,21 +62,21 @@ function BigDayForm(props) {
     title: '',
     description: '',
     themeColor: '#f40373',
-    startDate: null,
-    endDate: null,
-  };
-
-  // TODO: moved to initValues
-  const initDate = {
-    startDate: null,
-    endDate: null,
+    dates: {
+      startDate: null,
+      endDate: null,
+    },
   };
 
   // handle field error
   const validateSchema = Yup.object({
     title: Yup.string().required('Required Title'),
     description: Yup.string().required('Required Descriptiopn'),
+    dates: Yup.object().required('Required Dates'),
   });
+
+  // open DatesRangePicker
+  const [selectInput, setSelectInput] = useState(null);
 
   const onSubmit = (values, onSubmitPorps) => {
     // submit and save values
@@ -86,7 +86,13 @@ function BigDayForm(props) {
     // clean up the fields
     onSubmitPorps.resetForm();
   };
+
   /* ---------------------------- TODO: refactoring --------------------------- */
+
+  const initDate = {
+    startDate: null,
+    endDate: null,
+  };
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -205,7 +211,6 @@ function BigDayForm(props) {
             <Form className={BigDayFormStyle['form-container']}>
               <div className={BigDayFormStyle['form__title']}>Form Title</div>
 
-              {/* <div className={BigDayFormStyle['form__input-container']}> */}
               <Field
                 className={BigDayFormStyle['form__input']}
                 placeholder="title..."
@@ -213,7 +218,6 @@ function BigDayForm(props) {
                 name="title"
               />
               <ErrorMessage name="title" />
-              {/* </div> */}
 
               <Field
                 className={BigDayFormStyle['form__input']}
@@ -223,6 +227,29 @@ function BigDayForm(props) {
                 name="description"
               />
               <ErrorMessage name="description" />
+
+              <Field name="dates">
+                {({ form, field }) => {
+                  const { setFieldValue } = form;
+                  const { value } = field;
+
+                  return (
+                    <DateRangePicker
+                      displayFormat="YYYY.MM.DD"
+                      startDateId="start_date_id"
+                      endDateId="end_date_id"
+                      startDate={value.startDate}
+                      endDate={value.endDate}
+                      focusedInput={selectInput}
+                      onFocusChange={(selectInput) =>
+                        setSelectInput(selectInput)
+                      }
+                      onDatesChange={(val) => setFieldValue('dates', val)}
+                    />
+                  );
+                }}
+              </Field>
+              <ErrorMessage name="dates" />
 
               <button type="submit">submit</button>
             </Form>
