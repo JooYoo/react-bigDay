@@ -75,8 +75,24 @@ function BigDayForm(props) {
     dates: Yup.object().required('Required Dates'),
   });
 
-  // open DatesRangePicker
-  const [selectInput, setSelectInput] = useState(null);
+  // DatePicker: open
+  const [openDatePicker, setOpenDatePicker] = useState(null);
+
+  // ColorPicker:
+  const [openColorPicker, setOpenColorPicker] = useState(false);
+  const [themeColor, setThemeColor] = useState('');
+  const themeColorStyle = {
+    backgroundColor: `${themeColor}`,
+  };
+
+  const pickColorComplete = (pickedColor) => {
+    // update color toggle
+    setThemeColor(pickedColor);
+    // close color-pannel
+    setOpenColorPicker(false);
+    // update preview-ball: color
+    previewBigDay.themeColor = pickedColor;
+  };
 
   const onSubmit = (values, onSubmitPorps) => {
     // submit and save values
@@ -240,9 +256,9 @@ function BigDayForm(props) {
                       endDateId="end_date_id"
                       startDate={value.startDate}
                       endDate={value.endDate}
-                      focusedInput={selectInput}
-                      onFocusChange={(selectInput) =>
-                        setSelectInput(selectInput)
+                      focusedInput={openDatePicker}
+                      onFocusChange={(openDatePicker) =>
+                        setOpenDatePicker(openDatePicker)
                       }
                       onDatesChange={(val) => setFieldValue('dates', val)}
                     />
@@ -250,6 +266,29 @@ function BigDayForm(props) {
                 }}
               </Field>
               <ErrorMessage name="dates" />
+
+              <button
+                type="button"
+                className={BigDayFormStyle['form__color-picker__toggle']}
+                style={themeColorStyle}
+                onClick={() => setOpenColorPicker(!openColorPicker)}
+              ></button>
+              {openColorPicker && (
+                <Field name="themeColor">
+                  {({ form, field }) => {
+                    const { setFieldValue } = form;
+                    const { value } = field;
+
+                    return (
+                      <CirclePicker
+                        color={value}
+                        onChange={(val) => setFieldValue('themeColor', val.hex)}
+                        onChangeComplete={(val) => pickColorComplete(val.hex)}
+                      />
+                    );
+                  }}
+                </Field>
+              )}
 
               <button type="submit">submit</button>
             </Form>
