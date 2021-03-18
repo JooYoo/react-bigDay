@@ -53,6 +53,14 @@ function BigDayForm(props) {
 
   const [previewBigDay, setPreviewBigDay] = useState(initPreviewBigDay);
 
+  // update: Title
+  const updatePreviewTitle = (e) => {
+    setPreviewBigDay({
+      ...previewBigDay,
+      title: e.target.value,
+    });
+  };
+
   /* -------------------------------------------------------------------------- */
   /*                                   Formik                                   */
   /* -------------------------------------------------------------------------- */
@@ -232,6 +240,7 @@ function BigDayForm(props) {
                 placeholder="title..."
                 type="text"
                 name="title"
+                onKeyUp={(e) => updatePreviewTitle(e)}
               />
               <ErrorMessage name="title" />
 
