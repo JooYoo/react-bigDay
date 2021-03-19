@@ -136,12 +136,28 @@ function BigDayForm(props) {
   };
 
   const onSubmit = (values, onSubmitPorps) => {
+    // formate dates
+    let startDateFm = moment(values.dates.startDate).format('YYYY.MM.DD');
+    let endDateFm = moment(values.dates.endDate).format('YYYY.MM.DD');
+    let totalDays = values.dates.endDate.diff(values.dates.startDate, 'days');
     // TODO: submit and save values
     console.log('onSubmit:', values);
+    props.addBigDay(
+      values.title,
+      values.description,
+      startDateFm,
+      endDateFm,
+      totalDays,
+      values.themeColor,
+    );
     // after submit to make sure submitting process is done
     onSubmitPorps.setSubmitting(false);
     // clean up the fields
     onSubmitPorps.resetForm();
+    // reset color toggle
+    setThemeColor('#EFEFEF');
+    // reset preview
+    setPreviewBigDay(initPreviewBigDay);
   };
 
   /* ---------------------------- TODO: refactoring --------------------------- */
@@ -232,7 +248,7 @@ function BigDayForm(props) {
       endDate: endDate,
       themeColor: highlightColor,
     };
-    console.table(oldFormResult);
+    console.log(oldFormResult);
 
     // rest: title
     setTitle('');
