@@ -1,0 +1,16 @@
+$form__control-container--margin-bottom: 2vh;
+$form__control-input--radius: 10px;
+
+.error-required {
+  position: absolute;
+  left: 50%;
+  transform: translate(
+    -50%,
+    calc(-100% - #{$form__control-container--margin-bottom})
+  );
+  border-radius: $form__control-input--radius;
+  width: 100%;
+  height: calc(100% - #{$form__control-container--margin-bottom});
+  background-color: rgba($color: #ff0044, $alpha: 0.15);
+  pointer-events: none;
+}
