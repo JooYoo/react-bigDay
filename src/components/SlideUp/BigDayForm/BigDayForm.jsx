@@ -53,11 +53,53 @@ function BigDayForm(props) {
 
   const [previewBigDay, setPreviewBigDay] = useState(initPreviewBigDay);
 
-  // update: Title
+  // update: title
   const updatePreviewTitle = (e) => {
     setPreviewBigDay({
       ...previewBigDay,
       title: e.target.value,
+    });
+  };
+
+  // update: description
+  const updatePreviewDesc = (e) => {
+    setPreviewBigDay({
+      ...previewBigDay,
+      description: e.target.value,
+    });
+  };
+
+  // update: date
+  const updatePreviewDate = (dates) => {
+    // get raw dates
+    const { startDate, endDate } = dates;
+    // update preview: endDate, restDays
+    if (endDate) {
+      // convert dates to string
+      const prewStartDate = moment(startDate).format('YYYY.MM.DD');
+      const prewEndDate = moment(endDate).format('YYYY.MM.DD');
+      const prewRestDays = endDate.diff(startDate, 'days');
+
+      // update preview
+      setPreviewBigDay({
+        ...previewBigDay,
+        begin: prewStartDate,
+        end: prewEndDate,
+        totalDays: prewRestDays,
+      });
+    }
+  };
+
+  // update: color && set color-toggle color-pannel
+  const updatePreviewColor = (pickedColor) => {
+    // update color toggle
+    setThemeColor(pickedColor);
+    // close color-pannel
+    setOpenColorPicker(false);
+    // update preview-ball: color
+    setPreviewBigDay({
+      ...previewBigDay,
+      themeColor: pickedColor,
     });
   };
 
@@ -76,34 +118,25 @@ function BigDayForm(props) {
     },
   };
 
-  // handle field error
+  // field error
   const validateSchema = Yup.object({
     title: Yup.string().required('Required Title'),
     description: Yup.string().required('Required Descriptiopn'),
     dates: Yup.object().required('Required Dates'),
   });
 
-  // DatePicker: open
+  // DatePicker: toggle
   const [openDatePicker, setOpenDatePicker] = useState(null);
 
-  // ColorPicker:
+  // ColorPicker
   const [openColorPicker, setOpenColorPicker] = useState(false);
   const [themeColor, setThemeColor] = useState('');
   const themeColorStyle = {
     backgroundColor: `${themeColor}`,
   };
 
-  const pickColorComplete = (pickedColor) => {
-    // update color toggle
-    setThemeColor(pickedColor);
-    // close color-pannel
-    setOpenColorPicker(false);
-    // update preview-ball: color
-    previewBigDay.themeColor = pickedColor;
-  };
-
   const onSubmit = (values, onSubmitPorps) => {
-    // submit and save values
+    // TODO: submit and save values
     console.log('onSubmit:', values);
     // after submit to make sure submitting process is done
     onSubmitPorps.setSubmitting(false);
@@ -250,6 +283,7 @@ function BigDayForm(props) {
                 placeholder="Description"
                 as="textarea"
                 name="description"
+                onKeyUp={(e) => updatePreviewDesc(e)}
               />
               <ErrorMessage name="description" />
 
@@ -269,7 +303,10 @@ function BigDayForm(props) {
                       onFocusChange={(openDatePicker) =>
                         setOpenDatePicker(openDatePicker)
                       }
-                      onDatesChange={(val) => setFieldValue('dates', val)}
+                      onDatesChange={(val) => {
+                        setFieldValue('dates', val);
+                        updatePreviewDate(val);
+                      }}
                     />
                   );
                 }}
@@ -292,7 +329,7 @@ function BigDayForm(props) {
                       <CirclePicker
                         color={value}
                         onChange={(val) => setFieldValue('themeColor', val.hex)}
-                        onChangeComplete={(val) => pickColorComplete(val.hex)}
+                        onChangeComplete={(val) => updatePreviewColor(val.hex)}
                       />
                     );
                   }}
