@@ -9,7 +9,7 @@ import {
 
 /* --------------------------- get backend address -------------------------- */
 
-const host = process.env.HOST;
+const host = process.env.REACT_APP_HOST;
 
 /* -------------------------- get bigDays from API -------------------------- */
 
