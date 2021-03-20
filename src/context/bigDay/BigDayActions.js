@@ -7,11 +7,15 @@ import {
   BIGDAY_ERROR,
 } from './BigDayTypes';
 
+/* --------------------------- get backend address -------------------------- */
+
+const host = process.env.HOST;
+
 /* -------------------------- get bigDays from API -------------------------- */
 
 const getBigDays = async (dispatch) => {
   try {
-    const res = await axios.get('/api/v1/bigDays');
+    const res = await axios.get(`${host}/api/v1/bigDays`);
 
     dispatch({
       type: GET_BIGDAYS,
@@ -37,7 +41,7 @@ const updateBigDay = async (id, newBigDay, dispatch) => {
 
   try {
     // update data to api
-    await axios.patch(`/api/v1/bigDays/${id}`, newBigDay, config);
+    await axios.patch(`${host}/api/v1/bigDays/${id}`, newBigDay, config);
 
     // dispatch data
     dispatch({
@@ -64,7 +68,7 @@ const postBigDay = async (newBigDay, dispatch) => {
 
   try {
     // add data to api
-    const res = await axios.post('/api/v1/bigDays', newBigDay, config);
+    const res = await axios.post(`${host}/api/v1/bigDays`, newBigDay, config);
 
     // dispatch data
     dispatch({
@@ -84,7 +88,7 @@ const postBigDay = async (newBigDay, dispatch) => {
 const deleteBigDay = async (id, dispatch) => {
   try {
     // delete data from API
-    await axios.delete(`/api/v1/bigDays/${id}`);
+    await axios.delete(`${host}/api/v1/bigDays/${id}`);
 
     // dispatch data
     dispatch({
