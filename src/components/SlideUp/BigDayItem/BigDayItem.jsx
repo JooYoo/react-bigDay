@@ -75,6 +75,19 @@ function BigDayItem({ bigDay }) {
   };
 
   /* -------------------------------------------------------------------------- */
+  /*                    delete bigDay: check auth then delete                   */
+  /* -------------------------------------------------------------------------- */
+  const deleteBigDayHandler = (id) => {
+    // check clickable via Auth
+    if (!isAuthOk()) {
+      return;
+    }
+
+    // delete bigDay
+    deleteBigDay(id);
+  };
+
+  /* -------------------------------------------------------------------------- */
   /*                                calc restDays                               */
   /* -------------------------------------------------------------------------- */
   const endDate = moment(bigDay.end);
@@ -121,7 +134,7 @@ function BigDayItem({ bigDay }) {
       </div>
       <button
         className={BigDayItemStyle['list-item__btn']}
-        onClick={() => deleteBigDay(bigDay._id)}
+        onClick={() => deleteBigDayHandler(bigDay._id)}
       >
         remove
       </button>
