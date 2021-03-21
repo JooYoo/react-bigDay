@@ -11,7 +11,7 @@
 
 A Full-Stack WebApp. It helps users to keep track of important dates and shows how many days are left. I used this project to practice my ability to develop full-stack applications. The API and Database of this project which I built, is NOT allowed to be used in other projects. 
 
-## LinkTo
+## Link to
 - <a href="https://github.com/JooYoo/react-bigDay/">🔗 &nbsp; **Frontend**</a>
 - <a href="https://github.com/JooYoo/node-bigDay">🔗 &nbsp; **Backend**</a>
 
