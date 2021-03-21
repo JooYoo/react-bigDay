@@ -19,7 +19,7 @@ A Full-Stack WebApp. It helps users to keep track of important dates and shows h
 
 <p align="center" style="border-radius: 10px">
     <kbd>
-        <img src="https://media.giphy.com/media/TSbWbXKfAx39O5kBcO/giphy.gif" />
+      <img src="https://i.giphy.com/media/UX4BMkEubyo79Izbq4/giphy.webp"/>
     </kbd>
 </p>
 
@@ -44,3 +44,4 @@ As a user I want to have a tool to keep track of important dates and shows how m
 2. install dependence: `npm i`
 3. create `.env` to define **REACT_APP_API_URL**
 4. start project: `npm run start`
+
