@@ -1,4 +1,5 @@
 import {
+  BIGDAY_LOADING,
   GET_BIGDAYS,
   UPDATE_BIGDAY,
   POST_BIGDAY,
@@ -8,6 +9,12 @@ import {
 
 const AppReducer = (state, action) => {
   switch (action.type) {
+    case BIGDAY_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+
     case GET_BIGDAYS:
       return {
         ...state,

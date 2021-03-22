@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+  BIGDAY_LOADING,
   GET_BIGDAYS,
   UPDATE_BIGDAY,
   POST_BIGDAY,
@@ -15,6 +16,10 @@ const host = process.env.REACT_APP_API_URL;
 
 const getBigDays = async (dispatch) => {
   try {
+    dispatch({
+      type: BIGDAY_LOADING,
+    });
+
     const res = await axios.get(`${host}/api/v1/bigDays`);
 
     dispatch({

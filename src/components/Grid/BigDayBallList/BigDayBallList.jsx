@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { BeatLoader } from 'react-spinners';
 import { BigDayContext } from '../../../context/GlobalState';
 import BigDayBall from '../BigDayBall/BigDayBall';
 import BigDayInfo from '../BigDayInfo/BigDayInfo';
@@ -6,7 +7,7 @@ import bigDayBallListStyle from './BigDayBallList.module.scss';
 
 function BigDayBallList() {
   // get data from BigDayContext
-  const { bigDays, getBigDays } = useContext(BigDayContext);
+  const { loading, bigDays, getBigDays } = useContext(BigDayContext);
 
   /* -------------------------- get bigDays from API -------------------------- */
 
@@ -43,6 +44,10 @@ function BigDayBallList() {
 
   return (
     <div className={bigDayBallListStyle['ball-container']}>
+      <div className={bigDayBallListStyle['ball-container__loading']}>
+        <BeatLoader loading={loading} size={20} color={'white'} />
+      </div>
+
       <div className={bigDayBallListStyle['ball-container--highlight']}>
         {iterateBalls(highlightBigDayBall)}
       </div>
