@@ -7,6 +7,11 @@ body {
   overflow: hidden;
 }
 
+/* prevent animation when page loaded */
+.preload * {
+  animation-duration: 0s !important;
+}
+
 /* Date-picker */
 
 .DateRangePicker {

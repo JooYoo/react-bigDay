@@ -22,14 +22,13 @@ function SlideUp() {
   };
 
   return (
-    <div className={slideUpStyle['slideup-modal-host']}>
+    <>
       <div
         className={slideUpStyle['slideup__darkner']}
         style={isSlideUp ? darknerBlur : darknerClear}
         onClick={onSlideUp}
       ></div>
       <div
-        id="slideup__container"
         className={
           slideUpStyle['slideup__container'] +
           ' ' +
@@ -39,7 +38,6 @@ function SlideUp() {
         }
       >
         <button
-          id="slideup__btn"
           className={slideUpStyle['slideup__btn']}
           onClick={onSlideUp}
         ></button>
@@ -47,7 +45,7 @@ function SlideUp() {
           <BigDayList />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
