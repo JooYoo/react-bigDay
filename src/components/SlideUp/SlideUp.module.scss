@@ -91,3 +91,9 @@ $slideup-container-height: 7%;
     height: $slideup-container-height;
   }
 }
+
+@media (max-width: 1030px) {
+  .slideup__scroll-panel {
+    margin-top: 15vmin;
+  }
+}
