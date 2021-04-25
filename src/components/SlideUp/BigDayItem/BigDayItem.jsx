@@ -83,6 +83,12 @@ function BigDayItem({ bigDay }) {
       return;
     }
 
+    // check if current bigDay is highlight
+    const currentBigDay = bigDays.find((item) => item._id === id);
+    if (currentBigDay.isHighlight) {
+      return;
+    }
+
     // delete bigDay
     deleteBigDay(id);
   };
